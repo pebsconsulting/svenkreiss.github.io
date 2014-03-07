@@ -7,7 +7,7 @@
 
         <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
 
-        <title>morphDemo // Sven Kreiss // </title>
+        <title>Vimeo liquid tag for Pelican // Sven Kreiss // </title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -34,7 +34,7 @@
                 <h2 class="article-info">Sven Kreiss</h2>
                 <small class="about-author"></small>
                 <h5>Published</h5>
-                <p>Thu 06 March 2014</p>
+                <p>Fri 07 March 2014</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
         </header>
@@ -43,17 +43,24 @@
         <div class="content">
             <section class="post">
                 <header class="post-header">
-                    <h1>morphDemo</h1>
+                    <h1>Vimeo liquid tag for Pelican</h1>
                         <p class="post-meta">
-                            // under                                 <a class="post-category" href="/tag/physics.html">physics</a>
-                                <a class="post-category" href="/tag/d3js.html">d3.js</a>
-                                <a class="post-category" href="/tag/statistics.html">statistics</a>
+                            // under                                 <a class="post-category" href="/tag/web.html">web</a>
+                                <a class="post-category" href="/tag/python.html">python</a>
                         </p>
                 </header>
             </section>
-            <p><img width="350" class="img-thumbnail float-right" src="/images/kdtreemorph_preview.png">
-<a href="/files/morphDemo.html">This</a> is an interactive demo for a new morphing algorithm with special properties that are motivated from Physics. It uses <span class="caps">KD</span> trees and kernel density estimates that are calculated in real time in this demo. All visualization is done using <code>d3.js</code> and custom code for <span class="caps">KD</span> trees and kernel densities in&nbsp;JavaScript.</p>
-<p>Link: <a href="/files/morphDemo.html">morphDemo.html</a></p>
+            <p>Testing my implementation of the <code>vimeo</code> tag for <code>liquid_tags</code>. This is based on the <code>youtube</code> tag which in turn is based on the <a href="https://gist.github.com/jamieowen/2063748">jekyll / octopress youtube tag</a>.</p>
+<p>The syntax is the same as for the <code>youtube</code> tag:</p>
+<div class="highlight"><pre>
+{% vimeo id [width height] %}
+</pre></div>
+
+<p>The code is available on github: <a href="https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags">https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags</a></p>
+<h2>Testing with different&nbsp;sizes</h2>
+<p><div style="width:320px; height:180px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<p><div style="width:480px; height:270px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<p><div style="width:640px; height:360px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
             <div class="hr"></div>
             <a href="#" class="go-top">Go Top</a>
 <div class="comments">
