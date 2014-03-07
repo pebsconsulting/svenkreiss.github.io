@@ -6,7 +6,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The code is available on github: &lt;a href="https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags"&gt;https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Testing with different&amp;nbsp;sizes&lt;/h2&gt;
+&lt;h2&gt;Tests with different&amp;nbsp;sizes&lt;/h2&gt;
 &lt;p&gt;&lt;div style="width:320px; height:180px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div style="width:480px; height:270px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div style="width:640px; height:360px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;</summary><category term="web"></category><category term="python"></category></entry></feed>
