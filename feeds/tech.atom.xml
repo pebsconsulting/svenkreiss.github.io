@@ -5,7 +5,8 @@
 {% vimeo id [width height] %}
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The&amp;nbsp;code is available on github: &lt;a href="https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags"&gt;https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The&amp;nbsp;code is now merged into the main pelican-plugins repository on github:&lt;br /&gt;
+&lt;a href="https://github.com/getpelican/pelican-plugins"&gt;https://github.com/getpelican/pelican-plugins&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Tests with different&amp;nbsp;sizes&lt;/h2&gt;
 &lt;p&gt;&lt;div style="width:320px; height:180px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div style="width:480px; height:270px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
