@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Sven Kreiss</title><link href="/" rel="alternate"></link><link href="/feeds/tech.atom.xml" rel="self"></link><id>/</id><updated>2014-03-07T04:41:00-05:00</updated><entry><title>Vimeo liquid tag for Pelican</title><link href="/blog/pelican-vimeo/" rel="alternate"></link><updated>2014-03-07T04:41:00-05:00</updated><author><name>Sven Kreiss</name></author><id>tag:,2014-03-07:blog/pelican-vimeo/</id><summary type="html">&lt;p&gt;Testing my implementation of the &lt;code&gt;vimeo&lt;/code&gt; tag for &lt;code&gt;liquid_tags&lt;/code&gt;. This is based on the &lt;code&gt;youtube&lt;/code&gt; tag which in turn is based on the &lt;a href="https://gist.github.com/jamieowen/2063748"&gt;jekyll / octopress youtube tag&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The syntax is the same as for the &lt;code&gt;youtube&lt;/code&gt; tag:&lt;/p&gt;
+&lt;p&gt;The&amp;nbsp;syntax is the same as for the &lt;code&gt;youtube&lt;/code&gt; tag:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;
 {% vimeo id [width height] %}
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The code is available on github: &lt;a href="https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags"&gt;https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The&amp;nbsp;code is available on github: &lt;a href="https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags"&gt;https://github.com/svenkreiss/pelican-plugins/tree/master/liquid_tags&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Tests with different&amp;nbsp;sizes&lt;/h2&gt;
 &lt;p&gt;&lt;div style="width:320px; height:180px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div style="width:480px; height:270px;"&gt;&lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
