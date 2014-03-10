@@ -7,7 +7,7 @@
 
         <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
 
-        <title>Vimeo liquid tag for Pelican // Sven Kreiss // </title>
+        <title>OpenOsci // Sven Kreiss // </title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -34,7 +34,7 @@
                 <h2 class="article-info">Sven Kreiss</h2>
                 <small class="about-author"></small>
                 <h5>Published</h5>
-                <p>Fri 07 March 2014</p>
+                <p>Thu 01 June 2006</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
         </header>
@@ -43,25 +43,56 @@
         <div class="content">
             <section class="post">
                 <header class="post-header">
-                    <h1>Vimeo liquid tag for Pelican</h1>
+                    <h1>OpenOsci</h1>
                         <p class="post-meta">
-                            // under                                 <a class="post-category" href="/tag/web.html">web</a>
-                                <a class="post-category" href="/tag/python.html">python</a>
+                            // under                                 <a class="post-category" href="/tag/open-source.html">open source</a>
+                                <a class="post-category" href="/tag/open-hardware.html">open hardware</a>
+                                <a class="post-category" href="/tag/electronics.html">electronics</a>
                         </p>
                 </header>
             </section>
-            <p>Testing my implementation of the <code>vimeo</code> tag for <code>liquid_tags</code>. This is based on the <code>youtube</code> tag which in turn is based on the <a href="https://gist.github.com/jamieowen/2063748">jekyll / octopress youtube tag</a>.</p>
-<p>The syntax is the same as for the <code>youtube</code> tag:</p>
-<div class="highlight"><pre>
-{% vimeo id [width height] %}
-</pre></div>
+            <blockquote>
+<p>Open source and open hardware electronics project to build a low-cost digital oscilloscope with an 8-bit microcontroller and a mobile phone&nbsp;screen.</p>
+</blockquote>
+<p><div style="width:400px; height:300px;"><iframe src="//player.vimeo.com/video/21789038?title=0&amp;byline=0&amp;portrait=0" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<h2>Capabilities</h2>
+<ul>
+<li>4 input&nbsp;channels</li>
+<li>no fixed frequencies; the <span class="caps">ADC</span> can be run with different clock cycles and then the time for one x-division is displayed in the display; the &#8220;td&#8221; value (in the images below, 47 microseconds and 9&nbsp;milliseconds)</li>
+<li>the display also shows a frequency estimate of the signal. The algorithm looks at the time between to successive crossings of the x-axis and calculates a frequency from that. For sine waves, this is reasonably accurate. In the right picture below I measure background noise with a frequency of 49 Hz; the left picture shows a 43 kHz&nbsp;oscillation.</li>
+</ul>
+<div style="clear:both"> </div>
 
-<p><em>Update</em>: The code is now merged into the main pelican-plugins repository on github:<br />
-<a href="https://github.com/getpelican/pelican-plugins">https://github.com/getpelican/pelican-plugins</a></p>
-<h2>Tests with different&nbsp;sizes</h2>
-<p><div style="width:320px; height:180px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
-<p><div style="width:480px; height:270px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
-<p><div style="width:640px; height:360px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<h2>Fotos</h2>
+<p>[[image:Openosci_2channels_function_generator.jpg|thumb|left|500px|OpenOsci in action]]
+<div style="clear:both"></div>
+[[image:Openosci_channel_42kHz.jpg|thumb|left|300px|One channel.]]
+[[image:Openosci_4channels_50Hz.jpg|thumb|left|300px|Four channels.]]
+<div style="clear:both"> </div></p>
+<h2>Hardware</h2>
+<p>[[image:sketchy_060306_schematic.png|thumb|Prototype schematic]]
+[[image:sketchy_060306_board.png|thumb|Prototype board]]
+Please be aware that I built only one version. There are many flaws in that one version, but all photos/videos shown here are made with this version.
+<em> Schematic: [[media:sketchy_060306_produced.sch]]
+</em> Board:&nbsp;[[media:sketchy_060306_produced.brd]]</p>
+<p>While playing around with this prototype, I was already making improvements to layout and board which I never built or tested.
+<em> Schematic: [[media:sketchy_060426.sch]]
+</em> Board:&nbsp;[[media:sketchy_060426.brd]]</p>
+<h2>Software</h2>
+<ul>
+<li>[[media:openosci_source_code.zip]]</li>
+<li>code documentation
+<strong> [http://www.svenkreiss.com/images/openosci/doc/reference_manual.pdf reference_manual.pdf]
+</strong> [http://www.svenkreiss.com/images/openosci/doc/reference_manual_html/&nbsp;reference_manual_html]</li>
+</ul>
+<h2>Links</h2>
+<ul>
+<li><a href="http://www.apetech.de">apetech.de</a>: Graphical Display routines for the Nokia&nbsp;6100.</li>
+<li><a href="http://www.superkranz.de">superkranz.de</a>: Port of the above routines to Siemens S65&nbsp;screens.</li>
+<li><a href="http://www.mikrocontroller.net">mikrocontroller.net</a>: thread about the&nbsp;screen</li>
+</ul>
+<h2>Disclaimer</h2>
+<p>This is an old project of mine. It was done in 2006 and some parts might be out of date. I cannot guaranty proper functionality or fitness for any particular&nbsp;use.</p>
             <div class="hr"></div>
             <a href="#" class="go-top">Go Top</a>
 <div class="comments">
