@@ -7,7 +7,7 @@
 
         <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
 
-        <title>all posts // Sven Kreiss // </title>
+        <title>nmea-gpsd // Sven Kreiss // </title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -44,43 +44,22 @@
     </div>
 </div>    <div class="pure-u-1">
         <div class="content">
-            <h1 class="content-subhead">All posts</h1>
-                <div class="archive-item">
-                    <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
-                        <img class="avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
-                    </a>
-                    <h5 class="archive-date">2014</h5>
-                    <h4 class="archive-date">07 March</h4>
-                    <div class="archive-post"><a href="blog/pelican-vimeo/">Vimeo liquid tag for Pelican</a></div>
-                    <p class="archive-meta">Sven Kreiss in <a href="/blog/category/tech/">Tech</a></p>
-                </div>
-                <div class="archive-item">
-                    <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
-                        <img class="avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
-                    </a>
-                    <h5 class="archive-date">2014</h5>
-                    <h4 class="archive-date">06 March</h4>
-                    <div class="archive-post"><a href="blog/morph-demo/">morphDemo</a></div>
-                    <p class="archive-meta">Sven Kreiss in <a href="/blog/category/science/">Science</a></p>
-                </div>
-                <div class="archive-item">
-                    <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
-                        <img class="avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
-                    </a>
-                    <h5 class="archive-date">2014</h5>
-                    <h4 class="archive-date">01 March</h4>
-                    <div class="archive-post"><a href="blog/chasing-the-higgs-nyt/">Chasing the Higgs - New York Times</a></div>
-                    <p class="archive-meta">Sven Kreiss in <a href="/blog/category/media/">Media</a></p>
-                </div>
-                <div class="archive-item">
-                    <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
-                        <img class="avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
-                    </a>
-                    <h5 class="archive-date">2004</h5>
-                    <h4 class="archive-date">01 January</h4>
-                    <div class="archive-post"><a href="blog/number4-lvz/">number4 in Leipziger Volkszeitung</a></div>
-                    <p class="archive-meta">Sven Kreiss in <a href="/blog/category/tech/">Tech</a></p>
-                </div>
+            <h1 class="content-subhead">nmea-gpsd</h1>
+            <p><blockquote>
+<p>The <span class="caps">NMEA</span>-Parser from the <span class="caps">GPSD</span> project.<br />
+This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/</p>
+</blockquote>
+<h3>Old&nbsp;instructions on how to recreate this&nbsp;yourself</h3>
+<p>To&nbsp;extract the <span class="caps">NMEA</span>-Parser out of <span class="caps">GPSD</span> is easier than it looks at first. Just download the whole source and copy these files into a separate&nbsp;directory:</p>
+<ul>
+<li>gps.h</li>
+<li>timebase.h</li>
+<li>geoid.c</li>
+<li>gpsutils.c</li>
+<li>nmea_parse.c</li>
+</ul>
+<p>The&nbsp;next step is to replace all references to &#8221;gpsd.h&#8221; by &#8221;gps.h&#8221; and remove &#8221;#include gpsd_config.h&#8221;. 
+You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p></p>
         </div>
     </div>
 </div>

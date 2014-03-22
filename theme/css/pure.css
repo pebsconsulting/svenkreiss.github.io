@@ -290,6 +290,11 @@ pre {
 h2, h3 {
     padding-top: 1em;
 }
+.float-left {
+    float:left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 .float-right {
     float:right;
     margin-left: 20px;

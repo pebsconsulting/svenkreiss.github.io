@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sven Kreiss, ">
+
+        <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
+
+        <title>number123 // Sven Kreiss // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pure.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+<div class="sidebar pure-u">
+    <div class="cover-img" style="background-image: url('/images/winter_mountains.jpg')">
+        <div class="cover-body">
+            <header class="header">
+                <hgroup>
+                    <h1 class="brand-main"><a href="/">Sven Kreiss</a></h1>
+                    <p class="tagline"></p>
+                    <p class="links"><a href="/projects.html">Projects</a></p>
+                    <p class="links"><a href="/blog.html">Blog</a></p>
+                    <p class="social">
+                        <a href="https://twitter.com/svenkreiss">
+                            <i class="fa fa-twitter fa-2x"></i>
+                        </a>
+                        <a href="http://www.linkedin.com/in/svenkreiss">
+                            <i class="fa fa-linkedin fa-2x"></i>
+                        </a>
+                        <a href="https://github.com/svenkreiss/">
+                            <i class="fa fa-github fa-2x"></i>
+                        </a>
+                    <p>
+                </hgroup>
+            </header>
+        </div>
+    </div>
+</div>    <div class="pure-u-1">
+        <div class="content">
+            <h1 class="content-subhead">number123</h1>
+            <p><p>Auf&nbsp;dieser Seite möchte ich nicht speziell über einen Prototypen, sondern über das Projekt an sich sprechen. Was ist schon geschafft? Was fehlt? Was kann verändert&nbsp;werden?</p>
+<h2>Projektstatus - Stand: 01. Januar&nbsp;2006</h2>
+<ul>
+<li>
+<p>Fertig:
+<strong> lauffähige Prototypen: Nummer3, Nummer4 und Nummer4punkt1
+</strong> klassisches dynamisches Gehen realisiert
+<strong> Standardalgorithmus des dynamischen Gehens verbessert
+</strong> Nummer4punkt1 trägt zwei Akkupacks und zwei Platinen mit Elektronik (wichtige Algorithmen sind bereits auf die Controller ausgelagert)
+<strong> Nummer4punkt1 hat an jedem Fuß vier Kraftsensoren
+</strong> Umstellung der Programmiersprachen: Mikrocontroller mit C, Computer mit C++
+** Verteilung der Rechenprozesse auf mehrere&nbsp;Controller</p>
+</li>
+<li>
+<p>In&nbsp;Arbeit:
+<strong> Messung der Ströme an jedem Servomotor
+</strong> Experimente zur wissenschaftlichen Auswertung des Energieverbrauchs mit unterschiedlichen&nbsp;Bewegungsalgorithmen</p>
+</li>
+<li>
+<p>To&nbsp;Do:
+<strong> Zwei weitere Freiheitsgrade den Hüftgelenken hinzufügen
+</strong> Längen von Ober- und Unterschenkel vergrößern
+<strong> Abstandsmessverfahren optimieren
+</strong> Lagesensorik&nbsp;entwerfen</p>
+</li>
+</ul>
+<h2>Ideen, die mir im Kopf&nbsp;rumschwirren&#8230;</h2>
+<h3>Lagesensorik</h3>
+<p>In&nbsp;Planung ist eine Lagesensorik. Sie steht derzeit noch etwas hinten an, aber sie soll kommen. Sie soll die simpel klingende Aufgabe übernehmen, zu bestimmen wo &#8220;unten&#8221; ist. Def.: Unten ist da wo alles hin&nbsp;fällt.</p>
+<p>Basis dieser Sensorik sollen ein oder mehrere Beschleunigungssensoren von Analog Devices sein. Diese müssen natürlich mit anderen Sensoren gekoppelt sein. Hier bieten sich Gyroskope&nbsp;an.</p>
+<p>Hat&nbsp;jemand Erfahrungen? Bitte E-Mail schreiben: sk@svenkreiss.com
+Für hilfen wäre ich wirklich&nbsp;dankbar.</p>
+<h3>Geräuschpeilung</h3>
+<p>Mit&nbsp;der &#8220;Geräuschpeilung&#8221; möchte ich die Richtung des lautesten Geräusches in der Umgebung ermitteln. Wenn er eine schwenkbare Kamera besitzt, dann könnte er immer in diese Richtung &#8220;sehen&#8221;. Das könnte eine nette Spielerei&nbsp;werden.</p>
+<h3>Fernsteuerung</h3>
+<p>Wenn einmal die Elektronik für ein autonomes Gehen fertig ist und funktioniert, dann stelle ich es mir nicht besonders schwer vor, den Roboter mit einer Funkfernsteuerung aus dem Modellbau zu bedienen. Es müsste nur ein Controller die erzeugten <span class="caps">PWM</span>-Signale ausmessen und z.B. mit der Schrittweite der Laufbewegung&nbsp;koppeln.</p>
+<h3>Kamera</h3>
+<p>Wenn er autonom gehen kann und fernsteuerbar ist, dann wäre eine Erweiterung mit einer Kamera sicherlich interessant. Durch diese kann man den Roboter dann auch ohne direkten Sichtkontakt fernsteuern. Eine Einblendung z.B. mit Informationen aus welcher Richtung im Moment das lauteste Geräsch kommt wäre eine weitere&nbsp;Idee.</p>
+<h2>History</h2>
+<h3>Nummer1</h3>
+<p>Der&nbsp;erste Prototyp bestand aus zwei sehr schweren Füßen. Wie bei allen Gelenken wurde auch zu den Füßen die Kraft von den Servos per Seilzug übertragen. Diesen Prototyp baute ich in der siebenten und achten Klasse. Aus Mangel an Erfahrung habe ich keine Teile selber &#8220;geformt&#8221;. Der Roboter bestand nur aus zugesägten und gebohrten Aluminiumprofilen, Hartpapierplatten, M3-Schrauben, etc.
+Durch das Spiel der Seilzüge, durch die Gelenke aus M3-Schrauben und Alu-Profilen, durch eine viel zu schwere Konstruktion und durch einen fehlenden Oberkörper konnte dieser Roboter nicht einmal ansatzweise gehen. Jedoch waren schon bei Nummer1 in jedem Fuß vier Mikroschalter. Bei Kontakt mit dem Boden konnten die Füße schon nach dem Boden ausgerichtet&nbsp;werden.</p>
+<h3>Nummer2</h3>
+<p>Für&nbsp;Nummer2 habe ich dann schon selber verzinkte Stahlplatten entworfen, zugesägt, gebohrt und geknickt. Damit habe ich mir für jeden Servo einen Stahlrahmen für jeden einzelnen Servo gebaut. Die Stahlrahmen konnte man dann modular aneinander schrauben.
+Analoge Servos besitzen ein sehr großes Spiel. Durch die gleichen Module ist der Roboter sehr hoch geworden, so dass die Auswirkung des Spiels sehr groß&nbsp;war.</p>
+<h3>Nummer3</h3>
+<p>In&nbsp;der elften Klasse sollte jeder ein Jahresarbeit schreiben. Meine Arbeit schrieb ich über Nummer3. Nummer3 hatte viele Ähnlichkeiten zu Nummer2. Die Metallrahmen waren hier jedoch nicht mehr aus Stahl sondern aus Aluminium. Besonders hervorzuheben ist der Oberschenkel. Zwei um 45° gedrehte Servomotoren wurden an der langen Seite miteinander verbunden. Dadurch konnte die Länge des Oberschenkels von über 8 cm auf 3.25 cm verringert werden. Die Jahresarbeit habe ich dann in der zwölften Klasse zur Besonderen Lernleistung&nbsp;ausgebaut.</p>
+<p>Auch bei JugendForscht habe ich eine gekürzte Fassung meine Besonderen Lernleistung eingereicht. Nach dem ersten Platz beim Landeswettbewerb begann ich mit der Planung von Nummer4. Zum Bundeswettbewerb bin ich dann schon mit Nummer3 und Nummer4&nbsp;angetreten.</p>
+<h2>Bilder</h2>
+<p><img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_1.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_2.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_3.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_4.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_5.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_6.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_7.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_Bildschirmphoto1.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_Bildschirmphoto2.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_Bildschirmphoto4.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_Bildschirmphoto5.jpg">
+<img width="350" alt="number3" title="number3" src="/images/number4/number123/Nummer3_Bildschirmphoto8.jpg"></p></p>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <p>&copy; Sven Kreiss 2014 &ndash;
+        Built with a modified <a href="https://github.com/svenkreiss/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>.
+    </p>
+</footer>    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4070485-10', 'svenkreiss.github.io');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
