@@ -1,4 +1,0 @@
-svenkreiss.github.io
-====================
-
-Personal

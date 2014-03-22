@@ -7,7 +7,7 @@
 
         <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
 
-        <title>nmea-gpsd // Sven Kreiss // </title>
+        <title>Projects // Sven Kreiss // </title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -25,8 +25,8 @@
                 <hgroup>
                     <h1 class="brand-main"><a href="/">Sven Kreiss</a></h1>
                     <p class="tagline"></p>
-                    <p class="links"><a href="/projects.html">Projects</a></p>
-                    <p class="links"><a href="/blog.html">Blog</a></p>
+                    <p class="links"><a href="/projects">Projects</a></p>
+                    <p class="links"><a href="/blog">Blog</a></p>
                     <p class="social">
                         <a href="https://twitter.com/svenkreiss">
                             <i class="fa fa-twitter fa-2x"></i>
@@ -44,22 +44,23 @@
     </div>
 </div>    <div class="pure-u-1">
         <div class="content">
-            <h1 class="content-subhead">nmea-gpsd</h1>
-            <p><blockquote>
-<p>The <span class="caps">NMEA</span>-Parser from the <span class="caps">GPSD</span> project.<br />
-This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/</p>
-</blockquote>
-<h3>Old&nbsp;instructions on how to recreate this&nbsp;yourself</h3>
-<p>To&nbsp;extract the <span class="caps">NMEA</span>-Parser out of <span class="caps">GPSD</span> is easier than it looks at first. Just download the whole source and copy these files into a separate&nbsp;directory:</p>
+            <h1 class="content-subhead">Projects</h1>
+            <p><h2>Science</h2>
 <ul>
-<li>gps.h</li>
-<li>timebase.h</li>
-<li>geoid.c</li>
-<li>gpsutils.c</li>
-<li>nmea_parse.c</li>
+<li><a href="http://github.com/svenkreiss/decouple">Decouple</a>: Tool to factorize theory&nbsp;uncertainties.</li>
+<li><a href="https://twiki.cern.ch/twiki/bin/view/RooStats/WebHome">RooStats</a>: Statistics tools used at <span class="caps">CERN</span> to which I contributed core&nbsp;classes.</li>
+<li><a href="/blog/morph-demo">MorphDemo</a>: Demo of a new horizontal morphing&nbsp;algorithm.</li>
+<li><a href="/unicodeit.html">unicodeit</a>: Convert latex expressions to unicode characters: \mathcal{H} →&nbsp;ℋ.</li>
+<li><a href="http://www.quizsocket.com">quizsocket.com</a>: Free and real-time&nbsp;quizzes.</li>
+<li><a href="http://svenkreiss.github.io/politicalMoneyTracker/">politicalMoneyTracker</a>: Project for the Bicoastal Datafest 2013 at Columbia and Stanford&nbsp;University.</li>
 </ul>
-<p>The&nbsp;next step is to replace all references to &#8221;gpsd.h&#8221; by &#8221;gps.h&#8221; and remove &#8221;#include gpsd_config.h&#8221;. 
-You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p></p>
+<h2>Tech</h2>
+<ul>
+<li><a href="/openosci">OpenOsci</a>: Open source and open hardware&nbsp;oscilloscope.</li>
+<li><a href="/number4">number4</a>: My walking&nbsp;robot.</li>
+<li><a href="/nmea-gpsd">nmea-gpsd</a>: The part of gpsd that reads the nmea&nbsp;stream.</li>
+<li><a href="http://www.videoschalter.com">VideoSchalter.com</a>: Commercial device for switching video signals, processing audio and to collect data (<span class="caps">GPS</span>, acceleration) in Rallye&nbsp;cars.</li>
+</ul></p>
         </div>
     </div>
 </div>
