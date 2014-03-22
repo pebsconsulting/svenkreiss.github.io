@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/index.html</loc>
-<lastmod>2014-03-22T11:58:22-00:00</lastmod>
+<lastmod>2014-03-22T12:18:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -18,56 +18,56 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/nmea-gpsd/</loc>
+<loc>/nmea-gpsd.html</loc>
 <lastmod>2014-03-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/number123/</loc>
+<loc>/number123.html</loc>
 <lastmod>2014-03-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/number4/</loc>
+<loc>/number4.html</loc>
 <lastmod>2014-03-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/number4-first-version/</loc>
+<loc>/number4-first-version.html</loc>
 <lastmod>2013-03-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/number4-jan06/</loc>
+<loc>/number4-jan06.html</loc>
 <lastmod>2014-03-22T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/openosci/</loc>
+<loc>/openosci.html</loc>
 <lastmod>2014-03-09T19:36:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/projects/</loc>
+<loc>/projects.html</loc>
 <lastmod>2014-03-07T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/unicodeit-home/</loc>
+<loc>/unicodeit.html</loc>
 <lastmod>2013-03-01T12:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
