@@ -98,32 +98,10 @@ require.config({
 <p>Distributed Versioned Data Structures in JavaScript. Like git in js.<br />
 Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
 </blockquote>
-<p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, data structures means anything that can be serialized with <span class="caps">JSON</span>.</p>
+<p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, <em>data structures</em> means anything that can be serialized with <span class="caps">JSON</span>.</p>
 <p>This post is about the first development release, version&nbsp;0.1.0.</p>
-<h2>Loading the&nbsp;Library</h2>
-<p><code>dvds-js</code> is an <a href="http://requirejs.org/docs/whyamd.html#amd"><span class="caps">AMD</span> library</a>. You can load it using <code>require-js</code> in the&nbsp;browser:</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://s3.amazonaws.com/flaskApp_static/static/d3/d3.v3.min.js&quot;</span> <span class="nx">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://requirejs.org/docs/release/2.1.2/minified/require.js&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
-<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
-    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;crypto-js.SHA3&#39;</span><span class="o">:</span> <span class="s1">&#39;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;dvds&#39;</span><span class="o">:</span> <span class="s1">&#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;dvds.visualize&#39;</span><span class="o">:</span> <span class="s1">&#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;crypto-js.SHA3&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">exports</span><span class="o">:</span> <span class="s1">&#39;CryptoJS&#39;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="o">&lt;</span><span class="err">/script&gt;</span>
-</pre></div>
-
-
-<p>This includes <code>d3.js</code> for visualizations and <code>CryptoJS</code> is needed for calculating unique identifiers for&nbsp;commits.</p>
-<p>In <code>node.js</code> you would simply use <code>require</code>.</p>
-<h2>Basic&nbsp;Example</h2>
+<h2>Example</h2>
+<p>A&nbsp;repository <code>a</code> is created holding an array with the two names <code>Paul</code> and <code>Adam</code>. Then this repository is forked and the fork is called <code>b</code>. Both <code>a</code> and <code>b</code> are then modified. To demonstrate streaming capabilities, repository <code>b</code> is stringified before and after the manipulation. At the end <code>b</code> is merged into <code>a</code> and the result is shown&nbsp;below.</p>
 <div class="highlight"><pre><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;dvds&#39;</span><span class="p">,</span> <span class="s1">&#39;dvds.visualize&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dvds</span><span class="p">.</span><span class="nx">Repository</span><span class="p">([</span><span class="s1">&#39;Paul&#39;</span><span class="p">,</span><span class="s1">&#39;Adam&#39;</span><span class="p">]);</span>
     <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
@@ -148,22 +126,50 @@ Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/s
 
     <span class="c1">// visualize</span>
     <span class="nx">dvds</span><span class="p">.</span><span class="nx">visualize</span><span class="p">.</span><span class="nx">CommitGraph</span><span class="p">(</span><span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;#test1Graph&#39;</span><span class="p">))(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="nx">dvds</span><span class="p">.</span><span class="nx">visualize</span><span class="p">.</span><span class="nx">CommitGraph</span><span class="p">(</span><span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;#test2Graph&#39;</span><span class="p">))(</span><span class="nx">bReceived</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 
 
-<p><strong>Output</strong>: <span id="test1Out">?</span></p>
+<p><strong>Live output</strong>: <span id="test1Out">?</span></p>
 <p>Edit on <a href="http://jsfiddle.net/svenkreiss/3Ruat/10/">http://jsfiddle.net/svenkreiss/3Ruat/10/</a>.</p>
 <h3>Graph of&nbsp;Commits</h3>
+<p>Repositories are created with commit 0 shown on the left and then develop towards the right with the last commit on the far right. The second graph shows a merge of <code>a</code> and <code>b</code> as the last commit. This is a live visualization of the two repositories in the&nbsp;example.</p>
+<p>Repository <code>b</code>:</p>
+<p><svg height="150" width="600" id="test2Graph"></svg></p>
+<p>Repository <code>a</code> merged with <code>b</code>:</p>
 <p><svg height="150" width="600" id="test1Graph"></svg></p>
 <h2>Features</h2>
 <ul>
 <li>special merge algorithms for nested arrays and objects (e.g. arrays inside of objects inside of arrays inside of an&nbsp;object)</li>
-<li>commit hash is built over the commit&#8217;s data, but also over the entire parent-tree which means that the commit id can validate the&nbsp;parent-tree</li>
+<li>commit hash is built over the commit&#8217;s data, but also over the entire parent-tree which means that the commit id can validate the entire&nbsp;parent-tree</li>
 <li>a&nbsp;repository exposes the <code>data</code> member that behaves like a normal js variable (e.g. can be used in <code>angular.js</code> directly)</li>
 <li>visualization (currently only <code>CommitGraph</code>) is factored into its own submodule <code>visualize</code></li>
 <li>unit tests run with <code>Jasmine</code> and <code>Karma</code>, <code>jscs</code> is used to check code style, <code>uglify</code> is used to build min version and automation is done with <code>grunt</code></li>
 </ul>
+<h2>Setup</h2>
+<p><code>dvds-js</code> is an <a href="http://requirejs.org/docs/whyamd.html#amd"><span class="caps">AMD</span> library</a>. You can load it using <code>require-js</code> in the browser as in the example above. The setup looks something like&nbsp;this:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://s3.amazonaws.com/flaskApp_static/static/d3/d3.v3.min.js&quot;</span> <span class="nx">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://requirejs.org/docs/release/2.1.2/minified/require.js&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;crypto-js.SHA3&#39;</span><span class="o">:</span> <span class="s1">&#39;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dvds&#39;</span><span class="o">:</span> <span class="s1">&#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dvds.visualize&#39;</span><span class="o">:</span> <span class="s1">&#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;crypto-js.SHA3&#39;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">exports</span><span class="o">:</span> <span class="s1">&#39;CryptoJS&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>This includes <code>d3.js</code> for visualizations and <code>CryptoJS</code> is needed for calculating unique identifiers for commits.
+In <code>node.js</code>, this setup is not necessary and you would simply use <code>require()</code>.</p>
 <script>
 require(['dvds', 'dvds.visualize'], function() {
 
@@ -190,6 +196,7 @@ require(['dvds', 'dvds.visualize'], function() {
 
     // visualize
     dvds.visualize.CommitGraph(d3.select('#test1Graph'))(a);
+    dvds.visualize.CommitGraph(d3.select('#test2Graph'))(bReceived);
 });
 </script>
             <div class="hr"></div>
