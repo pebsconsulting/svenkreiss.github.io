@@ -34,7 +34,7 @@
                 <h2 class="article-info">Sven Kreiss</h2>
                 <small class="about-author"></small>
                 <h5>Draft</h5>
-                <p>Wed 12 March 2014</p>
+                <p>Fri 25 April 2014</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
         </header>
@@ -46,11 +46,11 @@
                     <h1>dvds-js version 0.1.0</h1>
                         <p class="post-meta">
                             // under
-                                <a class="post-category" href="/blog/tag/dvds/">dvds</a>
-                                <a class="post-category" href="/blog/tag/open-source/">open source</a>
+                                <a class="post-category" href="/blog/tag/dvds-js/">dvds-js</a>
                                 <a class="post-category" href="/blog/tag/javascript/">JavaScript</a>
-                                <a class="post-category" href="/blog/tag/internet/">internet</a>
-                                <a class="post-category" href="/blog/tag/data-structures/">data structures</a>
+                                <a class="post-category" href="/blog/tag/d3js/">d3.js</a>
+                                <a class="post-category" href="/blog/tag/distributed/">distributed</a>
+                                <a class="post-category" href="/blog/tag/version-control/">version control</a>
                             in <a class="post-category" href="/blog/category/tech/">Tech</a>
                         </p>
                 </header>
@@ -98,8 +98,8 @@ require.config({
 <p>Distributed Versioned Data Structures in JavaScript. Like git in js.<br />
 Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
 </blockquote>
-<p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict&nbsp;resolution.</p>
-<p>This post is about the very first dev release, version&nbsp;0.1.0.</p>
+<p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, data structures means anything that can be serialized with <span class="caps">JSON</span>.</p>
+<p>This post is about the first development release, version&nbsp;0.1.0.</p>
 <h2>Loading the&nbsp;Library</h2>
 <p><code>dvds-js</code> is an <a href="http://requirejs.org/docs/whyamd.html#amd"><span class="caps">AMD</span> library</a>. You can load it using <code>require-js</code> in the&nbsp;browser:</p>
 <div class="highlight"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://s3.amazonaws.com/flaskApp_static/static/d3/d3.v3.min.js&quot;</span> <span class="nx">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
@@ -157,10 +157,12 @@ Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/s
 <h3>Graph of&nbsp;Commits</h3>
 <p><svg height="150" width="600" id="test1Graph"></svg></p>
 <h2>Features</h2>
-<p>Some features that are implemented so&nbsp;far:</p>
 <ul>
-<li>special merge algorithms for nested arrays and objects (e.g. arrays in side of objects inside of arrays inside of an&nbsp;object)</li>
-<li>commit hash is built over the commit&#8217;s data, but also over the entire parent-tree which means that the commit id validates the parent-tree (as in&nbsp;git)</li>
+<li>special merge algorithms for nested arrays and objects (e.g. arrays inside of objects inside of arrays inside of an&nbsp;object)</li>
+<li>commit hash is built over the commit&#8217;s data, but also over the entire parent-tree which means that the commit id can validate the&nbsp;parent-tree</li>
+<li>a&nbsp;repository exposes the <code>data</code> member that behaves like a normal js variable (e.g. can be used in <code>angular.js</code> directly)</li>
+<li>visualization (currently only <code>CommitGraph</code>) is factored into its own submodule <code>visualize</code></li>
+<li>unit tests run with <code>Jasmine</code> and <code>Karma</code>, <code>jscs</code> is used to check code style, <code>uglify</code> is used to build min version and automation is done with <code>grunt</code></li>
 </ul>
 <script>
 require(['dvds', 'dvds.visualize'], function() {
