@@ -98,7 +98,7 @@ require.config({
 <p>Distributed Versioned Data Structures in JavaScript. Like git in js.<br />
 Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
 </blockquote>
-<p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, <em>data structures</em> means anything that can be serialized with <span class="caps">JSON</span>.</p>
+<p>The&nbsp;aim of <code>dvds-js</code> is to have a container (or repository) for data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, <em>data structures</em> means anything that can be serialized with <span class="caps">JSON</span>.</p>
 <p>This post is about the first development release, version&nbsp;0.1.0.</p>
 <h2>Example</h2>
 <p>A&nbsp;repository <code>a</code> is created holding an array with the two names <code>Paul</code> and <code>Adam</code>. Then this repository is forked and the fork is called <code>b</code>. Both <code>a</code> and <code>b</code> are then modified. To demonstrate streaming capabilities, repository <code>b</code> is stringified before and after the manipulation. At the end <code>b</code> is merged into <code>a</code> and the result is shown&nbsp;below.</p>
