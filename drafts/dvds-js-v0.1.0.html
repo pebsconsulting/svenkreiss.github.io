@@ -96,7 +96,7 @@ require.config({
 
 <blockquote>
 <p>Distributed Versioned Data Structures in JavaScript. Like git in js.<br />
-Checkout out the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
+Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
 </blockquote>
 <p>The&nbsp;aim of <code>dvds-js</code> is to have data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict&nbsp;resolution.</p>
 <p>This post is about the very first dev release, version&nbsp;0.1.0.</p>
@@ -156,6 +156,12 @@ Checkout out the code on <a href="http://github.com/svenkreiss/dvds-js">github.c
 <p>Edit on <a href="http://jsfiddle.net/svenkreiss/3Ruat/10/">http://jsfiddle.net/svenkreiss/3Ruat/10/</a>.</p>
 <h3>Graph of&nbsp;Commits</h3>
 <p><svg height="150" width="600" id="test1Graph"></svg></p>
+<h2>Features</h2>
+<p>Some features that are implemented so&nbsp;far:</p>
+<ul>
+<li>special merge algorithms for nested arrays and objects (e.g. arrays in side of objects inside of arrays inside of an&nbsp;object)</li>
+<li>commit hash is built over the commit&#8217;s data, but also over the entire parent-tree which means that the commit id validates the parent-tree (as in&nbsp;git)</li>
+</ul>
 <script>
 require(['dvds', 'dvds.visualize'], function() {
 
