@@ -114,6 +114,8 @@ Checkout the code on &lt;a href="http://github.com/svenkreiss/dvds-js"&gt;github
 
 &lt;p&gt;This includes &lt;code&gt;d3.js&lt;/code&gt; for visualizations and &lt;code&gt;CryptoJS&lt;/code&gt; is needed for calculating unique identifiers for commits.
 In &lt;code&gt;node.js&lt;/code&gt;, this setup is not necessary and you would simply use &lt;code&gt;require()&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Appendix: Static image of commit&amp;nbsp;graphs&lt;/h2&gt;
+&lt;p&gt;&lt;img width="500" alt="Commit graphs of dvds-js example." title="Commit graphs of dvds-js example." src="/images/dvds-js-v010-commitgraphs.png"&gt;&lt;/p&gt;
 &lt;script&gt;
 require(['dvds', 'dvds.visualize'], function() {
 
