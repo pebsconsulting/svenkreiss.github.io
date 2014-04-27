@@ -27,8 +27,8 @@
 require.config({
     paths: {
         'crypto-js.SHA3': 'http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3',
-        'dvds': 'http://svenkreiss.github.io/dvds-js/lib/dvds.min',
-        'dvds.visualize': 'http://svenkreiss.github.io/dvds-js/lib/dvds.min',
+        'dvds': 'http://svenkreiss.github.io/dvds-js/lib/dvds-0.1.0/dvds.min',
+        'dvds.visualize': 'http://svenkreiss.github.io/dvds-js/lib/dvds-0.1.0/dvds.min',
     },
     shim: {
         'crypto-js.SHA3': {
@@ -76,7 +76,7 @@ Checkout the code on &lt;a href="http://github.com/svenkreiss/dvds-js"&gt;github
 
 
 &lt;p&gt;&lt;strong&gt;Live output&lt;/strong&gt;: &lt;span id="test1Out"&gt;?&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Edit on &lt;a href="http://jsfiddle.net/svenkreiss/3Ruat/10/"&gt;http://jsfiddle.net/svenkreiss/3Ruat/10/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Edit on &lt;a href="http://jsfiddle.net/svenkreiss/3Ruat/11/"&gt;http://jsfiddle.net/svenkreiss/3Ruat/11/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Graph of&amp;nbsp;Commits&lt;/h3&gt;
 &lt;p&gt;Repositories are created with commit 0 shown on the left and then develop towards the right with the last commit on the far right. The second graph shows a merge of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; as the last commit. This is a live visualization of the two repositories in the&amp;nbsp;example.&lt;/p&gt;
 &lt;p&gt;Repository &lt;code&gt;b&lt;/code&gt;:&lt;/p&gt;
@@ -99,8 +99,8 @@ Checkout the code on &lt;a href="http://github.com/svenkreiss/dvds-js"&gt;github
 &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
     &lt;span class="nx"&gt;paths&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;crypto-js.SHA3&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;dvds&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;dvds.visualize&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://svenkreiss.github.io/dvds-js/lib/dvds.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;dvds&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://svenkreiss.github.io/dvds-js/lib/dvds-0.1.0/dvds.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;dvds.visualize&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://svenkreiss.github.io/dvds-js/lib/dvds-0.1.0/dvds.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="nx"&gt;shim&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s1"&gt;&amp;#39;crypto-js.SHA3&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
