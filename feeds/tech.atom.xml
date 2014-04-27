@@ -76,7 +76,7 @@ Checkout the code on &lt;a href="http://github.com/svenkreiss/dvds-js"&gt;github
 
 
 &lt;p&gt;&lt;strong&gt;Live output&lt;/strong&gt;: &lt;span id="test1Out"&gt;?&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Edit on &lt;a href="http://jsfiddle.net/svenkreiss/3Ruat/11/"&gt;http://jsfiddle.net/svenkreiss/3Ruat/11/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Edit on &lt;a href="http://jsfiddle.net/3Ruat/11/"&gt;http://jsfiddle.net/3Ruat/11/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Graph of&amp;nbsp;Commits&lt;/h3&gt;
 &lt;p&gt;Repositories are created with commit 0 shown on the left and then develop towards the right with the last commit on the far right. The second graph shows a merge of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; as the last commit. This is a live visualization of the two repositories in the&amp;nbsp;example.&lt;/p&gt;
 &lt;p&gt;Repository &lt;code&gt;b&lt;/code&gt;:&lt;/p&gt;
