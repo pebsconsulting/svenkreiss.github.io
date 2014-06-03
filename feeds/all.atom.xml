@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sven Kreiss</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-04-25T00:00:00-04:00</updated><entry><title>dvds-js version 0.1.0</title><link href="/blog/dvds-js-v0.1.0/" rel="alternate"></link><updated>2014-04-25T00:00:00-04:00</updated><author><name>Sven Kreiss</name></author><id>tag:,2014-04-25:blog/dvds-js-v0.1.0/</id><summary type="html">&lt;style&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sven Kreiss</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-06-02T00:00:00-04:00</updated><entry><title>Databench</title><link href="/blog/databench-initial/" rel="alternate"></link><updated>2014-06-02T00:00:00-04:00</updated><author><name>Sven Kreiss</name></author><id>tag:,2014-06-02:blog/databench-initial/</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Databench is a data analysis tool using &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;, &lt;a href="http://socket.io/"&gt;Socket.&lt;span class="caps"&gt;IO&lt;/span&gt;&lt;/a&gt; and &lt;a href="http://d3js.org/"&gt;d3.js&lt;/a&gt; with optional parallelization with &lt;a href="http://python-rq.org/"&gt;Redis Queue&lt;/a&gt; and visualization with &lt;a href="http://mpld3.github.io/"&gt;mpld3&lt;/a&gt;. Check out the &lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;live demos&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;&lt;img alt="/images/mpld3pi_demo.png" src="/images/mpld3pi_demo.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Seriously, check out the &lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;live demos&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;All&amp;nbsp;source codes are available on&amp;nbsp;GitHub:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/svenkreiss/databench"&gt;https://github.com/svenkreiss/databench&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/svenkreiss/databench_examples"&gt;https://github.com/svenkreiss/databench_examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/svenkreiss/databench_examples_viewer"&gt;https://github.com/svenkreiss/databench_examples_viewer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;I&amp;nbsp;like Python for data analysis. However, the frontends for visualization are poor. &lt;code&gt;d3.js&lt;/code&gt; is a great library for JavaScript and the web-browser is a powerful user interface. &lt;code&gt;Databench&lt;/code&gt; makes Python communicate with the web frontend with minimal&amp;nbsp;effort.&lt;/p&gt;
+&lt;p&gt;The&amp;nbsp;frontend can be interactive (real-time communication goes both ways between &lt;code&gt;Python&lt;/code&gt; and &lt;code&gt;JavaScript&lt;/code&gt;/&lt;code&gt;d3.js&lt;/code&gt;) and can contain explanatory text and&amp;nbsp;documentation.&lt;/p&gt;
+&lt;p&gt;To&amp;nbsp;run Databench, you need to install it with &lt;code&gt;pip&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;analysisfolder&lt;span class="nv"&gt;$ &lt;/span&gt;pip install git+https://github.com/svenkreiss/databench.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(preferably inside a &lt;code&gt;virtualenv&lt;/code&gt;). Then you create an &lt;code&gt;analyses&lt;/code&gt; folder, run &lt;code&gt;databench&lt;/code&gt; on the command&amp;nbsp;line&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;analysisfolder&lt;span class="nv"&gt;$ &lt;/span&gt;databench
+Registering analysis simplepi as blueprint in flask.
+Registering analysis slowpi as blueprint in flask.
+Registering analysis mpld3pi as blueprint in flask.
+Registering analysis mpld3PointLabel as blueprint in flask.
+Registering analysis mpld3Drag as blueprint in flask.
+Connecting socket.io to simplepi.
+Connecting socket.io to slowpi.
+Connecting socket.io to mpld3pi.
+Connecting socket.io to mpld3PointLabel.
+Connecting socket.io to mpld3Drag.
+--- databench ---
+ * Running on http://0.0.0.0:5000/
+ * Restarting with reloader
+Registering analysis simplepi as blueprint in flask.
+Registering analysis slowpi as blueprint in flask.
+Registering analysis mpld3pi as blueprint in flask.
+Registering analysis mpld3PointLabel as blueprint in flask.
+Registering analysis mpld3Drag as blueprint in flask.
+Connecting socket.io to simplepi.
+Connecting socket.io to slowpi.
+Connecting socket.io to mpld3pi.
+Connecting socket.io to mpld3PointLabel.
+Connecting socket.io to mpld3Drag.
+--- databench ---
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and&amp;nbsp;point your web-browser to &lt;code&gt;http://localhost:5000/&lt;/code&gt;.&lt;/p&gt;
+&lt;h1&gt;Example Analysis: &lt;code&gt;simplepi&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;Create a project-folder with this&amp;nbsp;structure:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;analyses&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;templates&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;simplepi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;simplepi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On&amp;nbsp;the command line, all that is necessary is to run &lt;code&gt;databench&lt;/code&gt; and the url (usually &lt;code&gt;http://localhost:5000&lt;/code&gt;) will be shown that you can open in a web&amp;nbsp;browser.&lt;/p&gt;
+&lt;p&gt;This is the backend in &lt;code&gt;simplepi.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sleep&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;databench&lt;/span&gt;
+
+
+&lt;span class="n"&gt;signals&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;databench&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Signals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;simplepi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@signals.on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;connect&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;onconnect&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;inside&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.001&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;r1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;r2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r1&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;r1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;r2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;r2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;inside&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;draws&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+            &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;emit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;#39;draws&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;draws&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;#39;inside&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;inside&lt;/span&gt;
+            &lt;span class="p"&gt;})&lt;/span&gt;
+
+            &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inside&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;draws&lt;/span&gt;
+            &lt;span class="n"&gt;uncertainty&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;draws&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;draws&lt;/span&gt;
+            &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;emit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;status&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;#39;pi-estimate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;inside&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;draws&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;#39;pi-uncertainty&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;uncertainty&lt;/span&gt;
+            &lt;span class="p"&gt;})&lt;/span&gt;
+
+    &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;emit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;action&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;done&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+
+&lt;span class="n"&gt;simplepi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;databench&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Analysis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;simplepi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;simplepi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Calculating \(\pi\) the simple way.&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The&amp;nbsp;analysis waits for the &lt;code&gt;connect&lt;/code&gt; signal and then starts an analysis. It provides the frontend with live updates through &lt;code&gt;signals.emit()&lt;/code&gt; where some of the &lt;code&gt;emit()&lt;/code&gt; messages are for the &lt;code&gt;log&lt;/code&gt; window and some are &lt;code&gt;status&lt;/code&gt; updates.&lt;/p&gt;
+&lt;p&gt;The&amp;nbsp;frontend now has to listen to the signals that are emitted by the backend and act on them. The frontend &lt;code&gt;simplepi.html&lt;/code&gt; is a &lt;code&gt;jinja2&lt;/code&gt; template with math rendered with &lt;a href="http://www.mathjax.org/"&gt;MathJax&lt;/a&gt; using &lt;code&gt;\( ... \)&lt;/code&gt; for inline math and &lt;code&gt;$$ ... $$&lt;/code&gt; for display&amp;nbsp;math:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;quot;base.html&amp;quot; %}
+{% block title %}simplepi{% endblock %}
+
+
+{% block content %}
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+    simplepi
+    &lt;span class="nt"&gt;&amp;lt;small&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;
+        π = &lt;span class="nt"&gt;&amp;lt;span&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pi-estimate&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;0.0 ± 1.0&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/i&amp;gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This little demo uses two random numbers \(r_1\) and \(r_2\) and
+then does a comparison $$r_1^2 + r_2^2 ≤ 1.0$$ to figure out whether
+the generated point is inside the first quadrant of the unit circle.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;pre&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;log&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+{% endblock %}
+
+
+{% block footerscripts %}
+&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;databench&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Databench&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;simplepi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;databench&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;genericElements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+    &lt;span class="nx"&gt;databench&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;signals&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;status&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#pi-estimate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nx"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pi-estimate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toFixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; ± &amp;#39;&lt;/span&gt;
+            &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pi-uncertainty&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toFixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+{% endblock %}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You&amp;nbsp;may want to extend the databench &lt;code&gt;base&lt;/code&gt; template giving you the header and footer and some standard libraries, but you can also write your own. The &lt;code&gt;block content&lt;/code&gt; is the &lt;span class="caps"&gt;HTML&lt;/span&gt; part of the frontend with fields for the results and an explanation about the algorithm. The &lt;code&gt;block footerscripts&lt;/code&gt; provides the frontend logic. It wires the &lt;code&gt;log&lt;/code&gt; signals to the &lt;code&gt;#log&lt;/code&gt; field with &lt;code&gt;databench.genericElements.log($('#log'))&lt;/code&gt;. It also starts listening for &lt;code&gt;status&lt;/code&gt; signals. When a &lt;code&gt;status&lt;/code&gt; signal is received, it executes the callback function where &lt;code&gt;msg&lt;/code&gt; contains a &lt;span class="caps"&gt;JSON&lt;/span&gt; representation of the dictionary that the backend sent when emitting &lt;code&gt;status&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And&amp;nbsp;last, to make Databench aware of this analysis, add it to the &lt;code&gt;__init__.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;simplepi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is all that is necessary to create an analysis in Databench. Now you can run &lt;code&gt;databench&lt;/code&gt; in the project-folder and visit &lt;a href="http://localhost:5000"&gt;http://localhost:5000&lt;/a&gt; to run and see the output of the&amp;nbsp;analysis.&lt;/p&gt;
+&lt;h1&gt;Plotting with &lt;code&gt;matplotlib&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;If&amp;nbsp;you like Python, but are not too familiar with &lt;code&gt;d3.js&lt;/code&gt;, you can use &lt;a href="http://mpld3.github.io/"&gt;mpld3&lt;/a&gt; to embed your python plots on the web. The &lt;code&gt;mpld3&lt;/code&gt; website has a nice gallery of examples that should all work in Databench. Two of them &amp;#8212; one with a standard plugin and one with a custom plugin &amp;#8212; are &lt;code&gt;mpld3PointLabel&lt;/code&gt; and &lt;code&gt;mpld3Drag&lt;/code&gt; which are both included in the &lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;live demos&lt;/a&gt; and the &lt;a href="https://github.com/svenkreiss/databench_examples"&gt;databench_examples&lt;/a&gt;&amp;nbsp;repository.&lt;/p&gt;
+&lt;h1&gt;Parallelization&lt;/h1&gt;
+&lt;p&gt;Examples with parallel processing cannot be included in the &lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;live demos&lt;/a&gt; but are included in the &lt;a href="https://github.com/svenkreiss/databench_examples"&gt;databench_examples&lt;/a&gt;&amp;nbsp;repository. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;slowpi&lt;/code&gt; example contains a demo-implementation of using &lt;a href=""&gt;Redis Queue&lt;/a&gt; for parallelization. The parallelization is fully implemented on the analysis-side without Databench knowing about it. Other parallelization techniques like &lt;a href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; and &lt;a href="http://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt; are probably working but are not tested&amp;nbsp;yet.&lt;/p&gt;</summary><category term="Flask"></category><category term="Socket.IO"></category><category term="JavaScript"></category><category term="d3.js"></category><category term="Python"></category><category term="matplotlib"></category><category term="mpld3"></category></entry><entry><title>dvds-js version 0.1.0</title><link href="/blog/dvds-js-v0.1.0/" rel="alternate"></link><updated>2014-04-25T00:00:00-04:00</updated><author><name>Sven Kreiss</name></author><id>tag:,2014-04-25:blog/dvds-js-v0.1.0/</id><summary type="html">&lt;style&gt;
 /* graph styles */
       svg {
         border:1px solid #faa;
