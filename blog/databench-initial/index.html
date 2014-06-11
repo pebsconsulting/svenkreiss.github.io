@@ -117,63 +117,63 @@ Connecting socket.io to mpld3Drag.
 
 
 <p>On&nbsp;the command line, all that is necessary is to run <code>databench</code> and the url (usually <code>http://localhost:5000</code>) will be shown that you can open in a web&nbsp;browser.</p>
-<p>This is the backend in <code>simplepi.py</code>:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
+<p>This is the backend in <code>simplepi.py</code> <em>(updated June 10, 2014)</em>:</p>
+<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Calculating \\(\\pi\\) the simple way.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
 
 <span class="kn">import</span> <span class="nn">databench</span>
 
 
-<span class="n">signals</span> <span class="o">=</span> <span class="n">databench</span><span class="o">.</span><span class="n">Signals</span><span class="p">(</span><span class="s">&#39;simplepi&#39;</span><span class="p">)</span>
+<span class="n">simplepi</span> <span class="o">=</span> <span class="n">databench</span><span class="o">.</span><span class="n">Analysis</span><span class="p">(</span><span class="s">&#39;simplepi&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+<span class="n">simplepi</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">__doc__</span>
+<span class="n">simplepi</span><span class="o">.</span><span class="n">thumbnail</span> <span class="o">=</span> <span class="s">&#39;simplepi.png&#39;</span>
 
-<span class="nd">@signals.on</span><span class="p">(</span><span class="s">&#39;connect&#39;</span><span class="p">)</span>
+<span class="nd">@simplepi.signals.on</span><span class="p">(</span><span class="s">&#39;connect&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">onconnect</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Run as soon as a browser connects to this.&quot;&quot;&quot;</span>
+
     <span class="n">inside</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
-        <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">())</span>
+        <span class="n">r1</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">r1</span><span class="o">*</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="o">*</span><span class="n">r2</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
             <span class="n">inside</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">draws</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-            <span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">,</span> <span class="p">{</span>
-                <span class="s">&#39;draws&#39;</span><span class="p">:</span><span class="n">draws</span><span class="p">,</span>
-                <span class="s">&#39;inside&#39;</span><span class="p">:</span><span class="n">inside</span>
-            <span class="p">})</span>
+            <span class="n">simplepi</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;draws&#39;</span><span class="p">:</span><span class="n">draws</span><span class="p">,</span> <span class="s">&#39;inside&#39;</span><span class="p">:</span><span class="n">inside</span><span class="p">})</span>
 
-            <span class="n">p</span> <span class="o">=</span> <span class="n">inside</span><span class="o">/</span><span class="n">draws</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">inside</span><span class="p">)</span><span class="o">/</span><span class="n">draws</span>
             <span class="n">uncertainty</span> <span class="o">=</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">draws</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span> <span class="o">/</span> <span class="n">draws</span>
-            <span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;status&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="n">simplepi</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;status&#39;</span><span class="p">,</span> <span class="p">{</span>
                 <span class="s">&#39;pi-estimate&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">inside</span><span class="o">/</span><span class="n">draws</span><span class="p">,</span>
                 <span class="s">&#39;pi-uncertainty&#39;</span><span class="p">:</span> <span class="n">uncertainty</span>
             <span class="p">})</span>
 
-    <span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;action&#39;</span><span class="p">:</span> <span class="s">&#39;done&#39;</span><span class="p">})</span>
-
-
-<span class="n">simplepi</span> <span class="o">=</span> <span class="n">databench</span><span class="o">.</span><span class="n">Analysis</span><span class="p">(</span><span class="s">&#39;simplepi&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">,</span> <span class="n">signals</span><span class="p">)</span>
-<span class="n">simplepi</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Calculating \(\pi\) the simple way.&quot;</span>
+    <span class="n">simplepi</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;action&#39;</span><span class="p">:</span> <span class="s">&#39;done&#39;</span><span class="p">})</span>
 </pre></div>
 
 
 <p>The&nbsp;analysis waits for the <code>connect</code> signal and then starts an analysis. It provides the frontend with live updates through <code>signals.emit()</code> where some of the <code>emit()</code> messages are for the <code>log</code> window and some are <code>status</code> updates.</p>
-<p>The&nbsp;frontend now has to listen to the signals that are emitted by the backend and act on them. The frontend <code>simplepi.html</code> is a <code>jinja2</code> template with math rendered with <a href="http://www.mathjax.org/">MathJax</a> using <code>\( ... \)</code> for inline math and <code>$$ ... $$</code> for display&nbsp;math:</p>
+<p>The&nbsp;frontend now has to listen to the signals that are emitted by the backend and act on them. The frontend <code>simplepi.html</code> is a <code>jinja2</code> template with math rendered with <a href="http://www.mathjax.org/">MathJax</a> using <code>\( ... \)</code> for inline math and <code>$$ ... $$</code> for display math <em>(updated June 10, 2014)</em>:</p>
 <div class="highlight"><pre>{% extends &quot;base.html&quot; %}
+
+
 {% block title %}simplepi{% endblock %}
 
 
 {% block content %}
 <span class="nt">&lt;h1&gt;</span>
     simplepi
-    <span class="nt">&lt;small&gt;&lt;i&gt;</span>
-        π = <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;pi-estimate&quot;</span><span class="nt">&gt;</span>0.0 ± 1.0<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/i&gt;&lt;/small&gt;</span>
+    <span class="nt">&lt;small&gt;&lt;i&gt;</span>π = <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;pi&quot;</span><span class="nt">&gt;</span>0.0 ± 1.0<span class="nt">&lt;/span&gt;&lt;/i&gt;&lt;/small&gt;</span>
 <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>This little demo uses two random numbers \(r_1\) and \(r_2\) and
-then does a comparison $$r_1^2 + r_2^2 ≤ 1.0$$ to figure out whether
+then does a comparison $$r_1^2 + r_2^2 <span class="ni">&amp;le;</span> 1.0$$ to figure out whether
 the generated point is inside the first quadrant of the unit circle.<span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;pre</span> <span class="na">id=</span><span class="s">&quot;log&quot;</span><span class="nt">&gt;&lt;/pre&gt;</span>
@@ -186,9 +186,9 @@ the generated point is inside the first quadrant of the unit circle.<span class=
     <span class="nx">databench</span><span class="p">.</span><span class="nx">genericElements</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#log&#39;</span><span class="p">));</span>
 
     <span class="nx">databench</span><span class="p">.</span><span class="nx">signals</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#pi-estimate&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span>
-            <span class="nx">msg</span><span class="p">[</span><span class="s1">&#39;pi-estimate&#39;</span><span class="p">].</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; ± &#39;</span>
-            <span class="o">+</span> <span class="nx">msg</span><span class="p">[</span><span class="s1">&#39;pi-uncertainty&#39;</span><span class="p">].</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#pi&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span>
+            <span class="nx">msg</span><span class="p">[</span><span class="s1">&#39;pi-estimate&#39;</span><span class="p">].</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; ± &#39;</span><span class="o">+</span>
+            <span class="nx">msg</span><span class="p">[</span><span class="s1">&#39;pi-uncertainty&#39;</span><span class="p">].</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="p">);</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
