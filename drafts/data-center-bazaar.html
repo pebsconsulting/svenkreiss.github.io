@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Concept for distributed peer-to-peer computing.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@svenkreiss">
+    <meta name="twitter:title" content="The Data Center and the Bazaar">
+    <meta name="twitter:description" content="Concept for distributed peer-to-peer computing.">
+    <meta name="twitter:domain" content="svenkreiss.com">
+
+    <meta property="og:title" content="The Data Center and the Bazaar" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Concept for distributed peer-to-peer computing." />
+    <meta property="og:site_name" content="svenkreiss.com" />
+
+        <link rel="alternate"  href="/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
+
+        <title>The Data Center and the Bazaar - Sven Kreiss</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pure.css">
+    <link rel="stylesheet" href="/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
+                    <img class="article-avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
+                </a>
+                <h2 class="article-info">Sven Kreiss</h2>
+                <small class="about-author"></small>
+                <h5>Draft</h5>
+                <p>Sun 10 August 2014</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>The Data Center and the Bazaar</h1>
+                        <p class="post-meta">
+                            // under
+                                <a class="post-category" href="/blog/tag/docker/">Docker</a>
+                                <a class="post-category" href="/blog/tag/go/">Go</a>
+                                <a class="post-category" href="/blog/tag/hpc/">HPC</a>
+                                <a class="post-category" href="/blog/tag/distributed/">distributed</a>
+                            in <a class="post-category" href="/blog/category/tech/">Tech</a>
+                        </p>
+                </header>
+            </section>
+            <blockquote>
+<p>Concept for distributed peer-to-peer&nbsp;computing.</p>
+</blockquote>
+<p>The&nbsp;goal is to use a heterogeneous set of computers to do calculations on data. The computers might be the local machine, a remote desktop, an <span class="caps">AWS</span> <span class="caps">EC2</span> instance, an <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html"><span class="caps">AWS</span> Elastic Beanstalk app</a>, a node on the <a href="https://developers.google.com/compute/docs/containers">Google Compute Engine</a> or some other real or virtual machine. All these machines have access to data in the form of <code>s3://*</code>, <code>hdfs://*</code>, <code>file://*</code>, <code>ssh://*</code>, <code>http://*</code> or some other means which might be slow or fast and cheap or&nbsp;expensive.</p>
+<h2>Flow</h2>
+<p>Assigning priorities to jobs or setting up priority queues on clusters is tedious and usually not very effective. Simple <code>PBS queue</code> systems don&#8217;t even have priorities, but all users just submit all their jobs to the same queue. Jobs are submitted to a central manager and get executed on the next available compute node. The data then has to be copied to that&nbsp;node.</p>
+<p>The&nbsp;idea behind <code>dockbroker</code> is more similar to a bazaar where there is no central manager. Every client knows at least one <code>dockbroker</code> which is a manager of a single compute node. Brokers know each other and can refer clients. To submit a job, the client asks a subset of the <code>dockbroker</code>s that it knows for an Offer based on a description of the job. The offer is made in <span class="caps">US</span>$ and comes with an expected completion time. The broker makes that offer based on the prices that are given by the cloud provider or (partially) free for local machines. The client picks the cheapest offer taking the estimated completion time into&nbsp;account.</p>
+<h2>Technical&nbsp;Suggestions</h2>
+<p>To&nbsp;make things a bit more concrete, here is an example&nbsp;interface.</p>
+<h3>Job</h3>
+<p>A&nbsp;job is defined by a <code>Dockerfile</code> and a <code>manifest</code>. The broker will use the Dockerfile to see which slices of the Docker image it has cached (and reduce the price). The manifest is used to quantify the price of&nbsp;resources.</p>
+<p>Example of a simple <code>manifest</code> file:</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;jobname&quot;</span><span class="o">:</span> <span class="s">&quot;Test job 1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;submitter&quot;</span><span class="o">:</span> <span class="s">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max-time&quot;</span><span class="o">:</span> <span class="s">&quot;24h&quot;</span><span class="p">,</span>
+    <span class="s">&quot;est-time&quot;</span><span class="o">:</span> <span class="s">&quot;12h&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Example of an advanced <code>manifest</code> file:</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;jobname&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 1&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;submitter&quot;</span><span class="o">:</span> <span class="s2">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;max-time&quot;</span><span class="o">:</span> <span class="s2">&quot;24h&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;est-time&quot;</span><span class="o">:</span> <span class="s2">&quot;12h&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;RAM&quot;</span><span class="o">:</span> <span class="s2">&quot;4GB&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;GPU&quot;</span><span class="o">:</span> <span class="s2">&quot;nvidia&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="m">64</span><span class="o">,</span>
+    <span class="s2">&quot;require-parallel-execution&quot;</span><span class="o">:</span> <span class="n">true</span><span class="o">,</span>
+    <span class="s2">&quot;input-resources&quot;</span><span class="o">:</span> <span class="cp">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;cache-life-time&quot;</span><span class="p">:</span> <span class="s2">&quot;1h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;md5&quot;</span><span class="p">:</span> <span class="s2">&quot;12345678901234567890&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;locations&quot;</span><span class="p">:</span> <span class="err">[</span>
+                <span class="s2">&quot;file://home/svenkreiss/data/some_data.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;s3://testbucket/some_data.csv&quot;</span><span class="p">,</span>
+            <span class="cp">]</span><span class="o">,</span>
+        <span class="p">}</span><span class="o">,</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="s2">&quot;0-31&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;cache-life-time&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567891&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
+                <span class="s2">&quot;hdfs://some_path/some_file_0.tar.gz&quot;</span>
+            <span class="cp">]</span><span class="o">,</span>
+        <span class="p">}</span><span class="o">,</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="s2">&quot;32-63&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;cache-life-time&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567892&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
+                <span class="s2">&quot;hdfs://some_path/some_file_1.tar.gz&quot;</span>
+            <span class="cp">]</span><span class="o">,</span>
+        <span class="p">}</span><span class="o">,</span>
+    <span class="o">],</span>
+    <span class="s2">&quot;output-resources&quot;</span><span class="o">:</span> <span class="cp">[</span>
+        <span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.csv&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1KB&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.log&quot;</span><span class="p">},</span>
+    <span class="cp">]</span><span class="o">,</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Parallel jobs that are communicating are created by setting <code>requrie-parallel-execution: true</code> which will tell the broker that he can only take as many jobs as he can run in parallel and has to leave the other jobs to another broker. The estimated time for completion will have to take into account that all jobs have to run in&nbsp;parallel.</p>
+<h3>Nodes running <code>dockbroker</code></h3>
+<p>Every compute node runs a <code>dockbroker</code>. <code>dockbroker</code>s advertise their existance to other brokers. Clients can ask &#8220;Who else do you know?&#8221; to discover other brokers to get alternative offers. Brokers create offers and handle the scheduling of jobs.
+Nodes that have data locally available or already cached part of the Docker image (a <code>slice</code>) are cheaper and therefore preferred. Estimated time to completion includes the estimated run times for jobs already in the&nbsp;queue.</p>
+<p>Brokers can build reputation of clients when their estimated run times and required resources match the job description the offer was based&nbsp;on.</p>
+<h3>Clients pick&nbsp;Brokers</h3>
+<p>Generally, clients pick the cheapest broker. However, the estimated time for completion might be valuable. For a compute node, the value of time is linear as the price of keeping the machine running on a cloud provider is a fixed cost by the hour. The &#8220;pain&#8221; of waiting for a job to complete could increase quadratic or exponentially which will define a sweet spot for when it is appropriate to &#8220;pay more&#8221; for a faster compute&nbsp;node.</p>
+<p>Clients can build reputation in dockbrokers when they deliver on&nbsp;time.</p>
+<h2>Use&nbsp;Cases</h2>
+<p><code>dockbroker</code> just sets up environments. The actual parallelized execution, collection of results, data management, etc. has to be handled separately. You could imagine running an <a href="http://ipython.org/ipython-doc/dev/parallel/parallel_intro.html">ipcluster</a> with it (popular in the <code>IPython</code> community) or running an <a href="https://spark.apache.org/">Apache Spark</a> cluster. Sometimes you just need different software versions in your cluster (like different versions of <a href="http://www.r-project.org/">R</a> or <a href="http://root.cern.ch"><span class="caps">ROOT</span></a>) or different resources (e.g. a <span class="caps">GPU</span>) and <code>dockbroker</code> can find the best place for the job and create the virtual&nbsp;environment.</p>
+<h2>Why?</h2>
+<p>I&nbsp;am not an expert in creating a distributed computing environment and more a user of it, but it sounds like an interesting project to implement in <a href="http://golang.org/">Go</a> (Docker is written in <a href="http://golang.org/">Go</a>). Contributions to <a href="https://github.com/svenkreiss/dockbroker">dockbroker on github</a> are very&nbsp;welcome.</p>
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "svenkreisscom"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Sven Kreiss 2014 &ndash;
+        Built with a modified <a href="https://github.com/svenkreiss/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>.
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4070485-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
