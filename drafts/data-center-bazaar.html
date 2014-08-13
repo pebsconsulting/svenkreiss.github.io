@@ -79,56 +79,56 @@
 <p>A&nbsp;job is defined by a <code>Dockerfile</code> and a <code>manifest</code> either in a local directory or inside a remote repository (for example on GitHub). The broker will use the Dockerfile to see which slices of the Docker image it has cached (and reduce the price). The manifest is used to quantify the price of&nbsp;resources.</p>
 <p>Example of a simple <code>manifest</code> file:</p>
 <div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;jobname&quot;</span><span class="o">:</span> <span class="s">&quot;Test job 1&quot;</span><span class="p">,</span>
-    <span class="s">&quot;submitter&quot;</span><span class="o">:</span> <span class="s">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="p">,</span>
-    <span class="s">&quot;max-time&quot;</span><span class="o">:</span> <span class="s">&quot;24h&quot;</span><span class="p">,</span>
-    <span class="s">&quot;est-time&quot;</span><span class="o">:</span> <span class="s">&quot;12h&quot;</span><span class="p">,</span>
+    <span class="s">&quot;JobName&quot;</span><span class="o">:</span> <span class="s">&quot;Test job 1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Submitter&quot;</span><span class="o">:</span> <span class="s">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="p">,</span>
+    <span class="s">&quot;MaxTime&quot;</span><span class="o">:</span> <span class="s">&quot;24h&quot;</span><span class="p">,</span>
+    <span class="s">&quot;EstTime&quot;</span><span class="o">:</span> <span class="s">&quot;12h&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>Example of an advanced <code>manifest</code> file:</p>
 <div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;jobname&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 1&quot;</span><span class="o">,</span>
-    <span class="s2">&quot;submitter&quot;</span><span class="o">:</span> <span class="s2">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="o">,</span>
-    <span class="s2">&quot;max-time&quot;</span><span class="o">:</span> <span class="s2">&quot;24h&quot;</span><span class="o">,</span>
-    <span class="s2">&quot;est-time&quot;</span><span class="o">:</span> <span class="s2">&quot;12h&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;JobName&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 1&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;Submitter&quot;</span><span class="o">:</span> <span class="s2">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;MaxTime&quot;</span><span class="o">:</span> <span class="s2">&quot;24h&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;EstTime&quot;</span><span class="o">:</span> <span class="s2">&quot;12h&quot;</span><span class="o">,</span>
     <span class="s2">&quot;RAM&quot;</span><span class="o">:</span> <span class="s2">&quot;4GB&quot;</span><span class="o">,</span>
     <span class="s2">&quot;GPU&quot;</span><span class="o">:</span> <span class="s2">&quot;nvidia&quot;</span><span class="o">,</span>
-    <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="m">64</span><span class="o">,</span>
-    <span class="s2">&quot;require-parallel-execution&quot;</span><span class="o">:</span> <span class="n">true</span><span class="o">,</span>
-    <span class="s2">&quot;input-resources&quot;</span><span class="o">:</span> <span class="cp">[</span>
+    <span class="s2">&quot;JobArray&quot;</span><span class="o">:</span> <span class="m">64</span><span class="o">,</span>
+    <span class="s2">&quot;RequireParallelExecution&quot;</span><span class="o">:</span> <span class="n">true</span><span class="o">,</span>
+    <span class="s2">&quot;InputResources&quot;</span><span class="o">:</span> <span class="cp">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;cache-life-time&quot;</span><span class="p">:</span> <span class="s2">&quot;1h&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;md5&quot;</span><span class="p">:</span> <span class="s2">&quot;12345678901234567890&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locations&quot;</span><span class="p">:</span> <span class="err">[</span>
+            <span class="s2">&quot;CacheLifeTime&quot;</span><span class="p">:</span> <span class="s2">&quot;1h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Md5&quot;</span><span class="p">:</span> <span class="s2">&quot;12345678901234567890&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Locations&quot;</span><span class="p">:</span> <span class="err">[</span>
                 <span class="s2">&quot;file://home/svenkreiss/data/some_data.csv&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;s3://testbucket/some_data.csv&quot;</span><span class="p">,</span>
             <span class="cp">]</span><span class="o">,</span>
         <span class="p">}</span><span class="o">,</span>
         <span class="p">{</span>
-            <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="s2">&quot;0-31&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;cache-life-time&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567891&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
+            <span class="s2">&quot;JobArray&quot;</span><span class="o">:</span> <span class="s2">&quot;0-31&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;CacheLifeTime&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567891&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
                 <span class="s2">&quot;hdfs://some_path/some_file_0.tar.gz&quot;</span>
             <span class="cp">]</span><span class="o">,</span>
         <span class="p">}</span><span class="o">,</span>
         <span class="p">{</span>
-            <span class="s2">&quot;job-array&quot;</span><span class="o">:</span> <span class="s2">&quot;32-63&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;cache-life-time&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567892&quot;</span><span class="o">,</span>
-            <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
+            <span class="s2">&quot;JobArray&quot;</span><span class="o">:</span> <span class="s2">&quot;32-63&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;CacheLifeTime&quot;</span><span class="o">:</span> <span class="s2">&quot;forever&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Size&quot;</span><span class="o">:</span> <span class="s2">&quot;500MB&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Md5&quot;</span><span class="o">:</span> <span class="s2">&quot;12345678901234567892&quot;</span><span class="o">,</span>
+            <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="cp">[</span>
                 <span class="s2">&quot;hdfs://some_path/some_file_1.tar.gz&quot;</span>
             <span class="cp">]</span><span class="o">,</span>
         <span class="p">}</span><span class="o">,</span>
     <span class="o">],</span>
-    <span class="s2">&quot;output-resources&quot;</span><span class="o">:</span> <span class="cp">[</span>
-        <span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.csv&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;1KB&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.log&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;OutputResources&quot;</span><span class="o">:</span> <span class="cp">[</span>
+        <span class="p">{</span><span class="s2">&quot;Size&quot;</span><span class="p">:</span> <span class="s2">&quot;1MB&quot;</span><span class="p">,</span> <span class="s2">&quot;Location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.csv&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;Size&quot;</span><span class="p">:</span> <span class="s2">&quot;1KB&quot;</span><span class="p">,</span> <span class="s2">&quot;Location&quot;</span><span class="p">:</span> <span class="s2">&quot;file://home/svenkreiss/job/test_job_1.log&quot;</span><span class="p">},</span>
     <span class="cp">]</span><span class="o">,</span>
 <span class="err">}</span>
 </pre></div>
@@ -143,7 +143,7 @@ Nodes that have data locally available or already cached part of the Docker imag
 <h2>Use&nbsp;Cases</h2>
 <p><code>dockbroker</code> just sets up environments. The actual parallelized execution, collection of results, data management, etc. has to be handled separately. You could imagine running an <a href="http://ipython.org/ipython-doc/dev/parallel/parallel_intro.html">ipcluster</a> with it (popular in the <code>IPython</code> community) or running an <a href="https://spark.apache.org/">Apache Spark</a> cluster. Sometimes you just need different software versions in your cluster (like different versions of <a href="http://www.r-project.org/">R</a> or <a href="http://root.cern.ch"><span class="caps">ROOT</span></a>) or different resources (e.g. a <span class="caps">GPU</span>) and <code>dockbroker</code> can find the best place for the job and create the virtual&nbsp;environment.</p>
 <h2>Why?</h2>
-<p>Because I need it. However, I am not an expert in creating a distributed computing environment and am more a user of it, but it sounds like an interesting project to implement in <a href="http://golang.org/">Go</a> (Docker is written in <a href="http://golang.org/">Go</a>). Contributions to <a href="https://github.com/svenkreiss/dockbroker">dockbroker on github</a> are very&nbsp;welcome.</p>
+<p>Because I need it. However, it is not like I am creating distributed computing environments every day. I am more a user of <span class="caps">HPC</span>, but it sounds like an interesting project to implement in <a href="http://golang.org/">Go</a> (Docker is written in <a href="http://golang.org/">Go</a>). Contributions to <a href="https://github.com/svenkreiss/dockbroker">dockbroker on github</a> are very&nbsp;welcome.</p>
             <div class="hr"></div>
             <a href="#" class="go-top">Go Top</a>
 <div class="comments">
