@@ -87,6 +87,7 @@
 </pre></div>
 
 
+<p>This job has access to unspecified <code>InputResources</code> and <code>OutputResources</code> (see advanced example below) but brokers who have easy access to those resources wont be able to make better offers than any other broker. Large files should always be specified because neglecting to specify expensive resources could lead to bad&nbsp;reputation.</p>
 <p>Example of an advanced <code>manifest</code> file:</p>
 <div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;JobName&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 1&quot;</span><span class="o">,</span>
@@ -134,7 +135,7 @@
 </pre></div>
 
 
-<p>Parallel jobs that are communicating are created by setting <code>requrie-parallel-execution: true</code> which will tell the broker that he can only take as many jobs as he can run in parallel and has to leave the other jobs to another broker. The estimated time for completion will have to take into account that all jobs have to run in&nbsp;parallel.</p>
+<p>Parallel jobs that are communicating are created by setting <code>RequireParallelExecution: true</code> which will tell the broker that he can only take as many jobs as he can run in parallel and has to leave the other jobs to another broker. The estimated time for completion will have to take into account that all jobs have to run in&nbsp;parallel.</p>
 <h3>Nodes running <code>dockbroker</code></h3>
 <p>Every compute node runs a <code>dockbroker</code>. <code>dockbroker</code>s advertise their existance to other brokers. Clients can ask &#8220;Who else do you know?&#8221; to discover other brokers to get alternative offers. Brokers create offers and handle the scheduling of jobs.
 Nodes that have data locally available or already cached part of the Docker image (a <code>slice</code>) are cheaper and therefore preferred. Estimated time to completion includes the estimated run times for jobs already in the&nbsp;queue.</p>
