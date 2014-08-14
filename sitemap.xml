@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/index.html</loc>
-<lastmod>2014-08-14T10:53:44-00:00</lastmod>
+<lastmod>2014-08-14T17:54:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -74,6 +74,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/blog/data-center-bazaar/</loc>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/blog/databench-initial/</loc>
 <lastmod>2014-06-03T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/category/tech/</loc>
-<lastmod>2014-06-03T00:00:00-00:00</lastmod>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -180,7 +187,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/tag/distributed/</loc>
-<lastmod>2014-04-25T00:00:00-00:00</lastmod>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -207,6 +214,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/blog/tag/hpc/</loc>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/blog/tag/d3js/</loc>
 <lastmod>2014-06-03T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -221,8 +235,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/blog/tag/go/</loc>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/blog/tag/statistics/</loc>
 <lastmod>2014-03-06T10:10:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/docker/</loc>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/blog/tag/peer-to-peer/</loc>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -243,7 +278,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/author/sven-kreiss/</loc>
-<lastmod>2014-06-03T00:00:00-00:00</lastmod>
+<lastmod>2014-08-14T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
