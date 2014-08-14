@@ -79,7 +79,7 @@
 <p>A&nbsp;job is defined by a <code>Dockerfile</code> and a <code>manifest</code> either in a local directory or inside a remote repository (for example on GitHub). The broker will use the Dockerfile to see which slices of the Docker image it has cached (and reduce the price). The manifest is used to quantify the price of&nbsp;resources.</p>
 <p>Example of a simple <code>manifest</code> file:</p>
 <div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;JobName&quot;</span><span class="o">:</span> <span class="s">&quot;Test job 1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Name&quot;</span><span class="o">:</span> <span class="s">&quot;Test job 1&quot;</span><span class="p">,</span>
     <span class="s">&quot;Submitter&quot;</span><span class="o">:</span> <span class="s">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="p">,</span>
     <span class="s">&quot;MaxTime&quot;</span><span class="o">:</span> <span class="s">&quot;24h&quot;</span><span class="p">,</span>
     <span class="s">&quot;EstTime&quot;</span><span class="o">:</span> <span class="s">&quot;12h&quot;</span><span class="p">,</span>
@@ -90,7 +90,7 @@
 <p>This job has access to unspecified <code>InputResources</code> and <code>OutputResources</code> (see advanced example below) but brokers who have easy access to those resources wont be able to make better offers than any other broker. Large files should always be specified because neglecting to specify expensive resources could lead to bad&nbsp;reputation.</p>
 <p>Example of an advanced <code>manifest</code> file:</p>
 <div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;JobName&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 1&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Test job 2&quot;</span><span class="o">,</span>
     <span class="s2">&quot;Submitter&quot;</span><span class="o">:</span> <span class="s2">&quot;Sven Kreiss &lt;me@svenkreiss.com&gt;&quot;</span><span class="o">,</span>
     <span class="s2">&quot;MaxTime&quot;</span><span class="o">:</span> <span class="s2">&quot;24h&quot;</span><span class="o">,</span>
     <span class="s2">&quot;EstTime&quot;</span><span class="o">:</span> <span class="s2">&quot;12h&quot;</span><span class="o">,</span>
