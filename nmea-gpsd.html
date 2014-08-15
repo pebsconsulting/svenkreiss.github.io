@@ -72,6 +72,11 @@ This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/
 <p>The&nbsp;next step is to replace all references to &#8221;gpsd.h&#8221; by &#8221;gps.h&#8221; and remove &#8221;#include gpsd_config.h&#8221;. 
 You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p></p>
         </div>
+
+        <br /><br /><br />
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_sharing_toolbox"></div>
+        <br />
     </div>
 </div>
 <footer class="footer">
@@ -117,6 +122,8 @@ You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&
   })();
 
 </script>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#ra-53ee42725948eab5"></script>
 
 </body>
 </html>
