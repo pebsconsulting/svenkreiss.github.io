@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/index.html</loc>
-<lastmod>2014-08-15T16:51:05-00:00</lastmod>
+<lastmod>2014-08-17T22:04:27-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -74,6 +74,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/blog/phd-thesis/</loc>
+<lastmod>2014-08-17T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/blog/data-center-bazaar/</loc>
 <lastmod>2014-08-14T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/category/science/</loc>
-<lastmod>2014-03-06T10:10:00-00:00</lastmod>
+<lastmod>2014-08-17T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -264,7 +271,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/tag/physics/</loc>
-<lastmod>2014-03-06T10:10:00-00:00</lastmod>
+<lastmod>2014-08-17T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -278,7 +285,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/blog/author/sven-kreiss/</loc>
-<lastmod>2014-08-14T00:00:00-00:00</lastmod>
+<lastmod>2014-08-17T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
