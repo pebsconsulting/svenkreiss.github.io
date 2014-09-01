@@ -33,7 +33,6 @@
     <div class="cover-img" style="background-image: url('/images/winter_mountains_1600.jpeg')">
         <div class="cover-body">
             <header class="header">
-                <hgroup>
                     <h1 class="brand-main"><a href="/">Sven Kreiss</a></h1>
                     <p class="tagline"></p>
                     <p class="links"><a href="/projects.html">Projects</a></p>
@@ -49,14 +48,13 @@
                             <i class="fa fa-github fa-2x"></i>
                         </a>
                     <p>
-                </hgroup>
             </header>
         </div>
     </div>
 </div>    <div class="pure-u-1">
         <div class="content">
             <h1 class="content-subhead">nmea-gpsd</h1>
-            <p><blockquote>
+            <blockquote>
 <p>The <span class="caps">NMEA</span>-Parser from the <span class="caps">GPSD</span> project.<br />
 This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/</p>
 </blockquote>
@@ -70,7 +68,7 @@ This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/
 <li>nmea_parse.c</li>
 </ul>
 <p>The&nbsp;next step is to replace all references to &#8221;gpsd.h&#8221; by &#8221;gps.h&#8221; and remove &#8221;#include gpsd_config.h&#8221;. 
-You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p></p>
+You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p>
         </div>
     </div>
 </div>
