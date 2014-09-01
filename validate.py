@@ -12,7 +12,7 @@ URL = 'http://www.svenkreiss.com/'
 def main():
     r = requests.get('http://html5.validator.nu/', params={'doc': URL})
     if 'The document is valid HTML5' in r.text:
-        # success. all good.
+        # success! all good.
         return
 
     # there were problems. here is the output:
