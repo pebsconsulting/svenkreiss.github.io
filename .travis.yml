@@ -1,7 +1,9 @@
-language: python
+nguage: python
+branches:
+  only:
+    - gh-pages
 python:
  - "2.7"
 install:
- - "pip install requests"
-script: "python validate.py"
-
+ - "pip install git+https://github.com/svenkreiss/travisci_html5.git"
+script: "html5validator --blacklist reference_manual_html"
