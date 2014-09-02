@@ -64,27 +64,7 @@
                         </p>
                 </header>
             </section>
-            <style>
-/* graph styles */
-      svg {
-        border:1px solid #faa;
-        background-color:#fee;
-      }
-      .link {
-        stroke: #000;
-        stroke-width: 1.5px;
-      }
-      .node circle {
-        fill: #000;
-        stroke: #fff;
-        stroke-width: 1.5px;
-      }
-      .node text {
-        text-anchor: middle;
-      }
-</style>
-
-<script src="http://s3.amazonaws.com/flaskApp_static/static/d3/d3.v3.min.js" charset="utf-8"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js" charset="utf-8"></script>
 
 <script src="http://requirejs.org/docs/release/2.1.2/minified/require.js"></script>
 
@@ -104,7 +84,7 @@ require.config({
 </script>
 
 <blockquote>
-<p>Distributed Versioned Data Structures in JavaScript. Like git in js.<br />
+<p>Distributed Versioned Data Structures in JavaScript. Like git in js.
 Checkout the code on <a href="http://github.com/svenkreiss/dvds-js">github.com/svenkreiss/dvds-js</a>.</p>
 </blockquote>
 <p>The&nbsp;aim of <code>dvds-js</code> is to have a container (or repository) for data structures in JavaScript that you can <code>fork()</code>, serialize and send over the wire, <code>commit()</code> to and then stream back and <code>merge()</code> with full conflict resolution. Here, <em>data structures</em> means anything that can be serialized with <span class="caps">JSON</span>.</p>
