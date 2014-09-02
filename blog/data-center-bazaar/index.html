@@ -26,19 +26,12 @@
     <link rel="stylesheet" href="/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".content").fitVids();
-        });
-    </script>
 </head>
 
 <body>
 <div class="pure-g-r" id="layout">
     <div class="sidebar sidebar-article pure-u">
         <header class="header-article">
-            <hgroup>
                 <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
                     <img class="article-avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
                 </a>
@@ -47,7 +40,6 @@
                 <h5>Published</h5>
                 <p>Thu 14 August 2014</p>
                 <a href="/">&larr;Home</a>
-            </hgroup>
         </header>
     </div>
     <div class="pure-u">
@@ -65,15 +57,15 @@
                             in <a class="post-category" href="/blog/category/tech/">Tech</a>&nbsp;&nbsp;&nbsp;
 
                             <span style="display:inline-block;">
-                            // share on <a href="https://twitter.com/share?text=The%20Data%20Center%20and%20the%20Bazaar&via=svenkreiss" target="_blank">
+                            // share on <a href="https://twitter.com/share?text=%22The%20Data%20Center%20and%20the%20Bazaar%22&amp;via=svenkreiss" target="_blank">
                                 <i class="fa fa-twitter fa-lg"></i> Twitter
                             </a>
-                            </span
+                            </span>
                         </p>
                 </header>
             </section>
-            <p><img width="150" class="img-thumbnail float-right" src="/images/bazaar.png"></p>
-<p>This is a concept for peer-to-peer computing. The goal is to use a heterogeneous set of computers to run analyses on data. The computers might be the local machine, a remote desktop, an <span class="caps">AWS</span> <span class="caps">EC2</span> instance, an <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html"><span class="caps">AWS</span> Elastic Beanstalk app</a>, a node on the <a href="https://developers.google.com/compute/docs/containers">Google Compute Engine</a> or some other real or virtual machine. All these machines have access to data in the form of <code>s3://*</code>, <code>hdfs://*</code>, <code>file://*</code>, <code>ssh://*</code>, <code>http://*</code> or some other means which might be slow or fast and cheap or&nbsp;expensive.</p>
+            <p><img width="150" alt="dockbroker icon" title="dockbroker icon" class="img-thumbnail float-right" src="/images/bazaar.png">
+This is a concept for peer-to-peer computing. The goal is to use a heterogeneous set of computers to run analyses on data. The computers might be the local machine, a remote desktop, an <span class="caps">AWS</span> <span class="caps">EC2</span> instance, an <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html"><span class="caps">AWS</span> Elastic Beanstalk app</a>, a node on the <a href="https://developers.google.com/compute/docs/containers">Google Compute Engine</a> or some other real or virtual machine. All these machines have access to data in the form of <code>s3://*</code>, <code>hdfs://*</code>, <code>file://*</code>, <code>ssh://*</code>, <code>http://*</code> or some other means which might be slow or fast and cheap or&nbsp;expensive.</p>
 <h2>Flow</h2>
 <p>Assigning priorities to jobs or setting up priority queues on clusters is tedious and usually not very effective. Simple <code>PBS queue</code> systems don&#8217;t even have priorities, but all users just submit all their jobs to the same queue. Jobs are submitted to a central manager and get executed on the next available compute node. The data then has to be copied to that&nbsp;node.</p>
 <p>The&nbsp;idea behind this post is more similar to a bazaar where there is no central manager. Every <em>client</em> knows at least one <em>broker</em> which is a manager of a single compute node. Brokers know each other and can refer clients. To submit a job, the client asks a subset of the brokers that it knows for an <em>offer</em> based on a description of the job. The offer is made in <span class="caps">US</span>$ and comes with an expected completion time. The broker makes that offer based on the prices that are given by the cloud provider or (partially) free for local machines. The client picks the cheapest offer taking the estimated completion time into&nbsp;account.</p>

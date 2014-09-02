@@ -26,19 +26,12 @@
     <link rel="stylesheet" href="/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".content").fitVids();
-        });
-    </script>
 </head>
 
 <body>
 <div class="pure-g-r" id="layout">
     <div class="sidebar sidebar-article pure-u">
         <header class="header-article">
-            <hgroup>
                 <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
                     <img class="article-avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
                 </a>
@@ -47,7 +40,6 @@
                 <h5>Published</h5>
                 <p>Thu 06 March 2014</p>
                 <a href="/">&larr;Home</a>
-            </hgroup>
         </header>
     </div>
     <div class="pure-u">
@@ -63,14 +55,14 @@
                             in <a class="post-category" href="/blog/category/science/">Science</a>&nbsp;&nbsp;&nbsp;
 
                             <span style="display:inline-block;">
-                            // share on <a href="https://twitter.com/share?text=morphDemo&via=svenkreiss" target="_blank">
+                            // share on <a href="https://twitter.com/share?text=%22morphDemo%22&amp;via=svenkreiss" target="_blank">
                                 <i class="fa fa-twitter fa-lg"></i> Twitter
                             </a>
-                            </span
+                            </span>
                         </p>
                 </header>
             </section>
-            <p><img width="350" class="img-thumbnail float-right" src="/images/kdtreemorph_preview.png">
+            <p><img width="350" alt="preview of kd-tree morphing" title="preview of kd-tree morphing" class="img-thumbnail float-right" src="/images/kdtreemorph_preview.png">
 <a href="/files/morphDemo.html">This</a> is an interactive demo for a new morphing algorithm with special properties that are motivated from Physics. It uses <span class="caps">KD</span> trees and kernel density estimates that are calculated in real time in this demo. All visualization is done using <code>d3.js</code> and custom code for <span class="caps">KD</span> trees and kernel densities in&nbsp;JavaScript.</p>
 <p>Link: <a href="/files/morphDemo.html">morphDemo.html</a></p>
             <div class="hr"></div>

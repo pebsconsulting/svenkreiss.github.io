@@ -26,19 +26,12 @@
     <link rel="stylesheet" href="/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".content").fitVids();
-        });
-    </script>
 </head>
 
 <body>
 <div class="pure-g-r" id="layout">
     <div class="sidebar sidebar-article pure-u">
         <header class="header-article">
-            <hgroup>
                 <a href="/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
                     <img class="article-avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
                 </a>
@@ -47,7 +40,6 @@
                 <h5>Published</h5>
                 <p>Fri 07 March 2014</p>
                 <a href="/">&larr;Home</a>
-            </hgroup>
         </header>
     </div>
     <div class="pure-u">
@@ -62,10 +54,10 @@
                             in <a class="post-category" href="/blog/category/tech/">Tech</a>&nbsp;&nbsp;&nbsp;
 
                             <span style="display:inline-block;">
-                            // share on <a href="https://twitter.com/share?text=Vimeo%20liquid%20tag%20for%20Pelican&via=svenkreiss" target="_blank">
+                            // share on <a href="https://twitter.com/share?text=%22Vimeo%20liquid%20tag%20for%20Pelican%22&amp;via=svenkreiss" target="_blank">
                                 <i class="fa fa-twitter fa-lg"></i> Twitter
                             </a>
-                            </span
+                            </span>
                         </p>
                 </header>
             </section>
@@ -75,12 +67,12 @@
 {% vimeo id [width height] %}
 </pre></div>
 
-<p><em>Update</em>: The code is now merged into the main pelican-plugins repository on github:<br />
+<p><em>Update</em>: The code is now merged into the main pelican-plugins repository on github:
 <a href="https://github.com/getpelican/pelican-plugins">https://github.com/getpelican/pelican-plugins</a></p>
 <h2>Tests with different&nbsp;sizes</h2>
-<p><div style="width:320px; height:180px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="320" height="180" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
-<p><div style="width:480px; height:270px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="480" height="270" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
-<p><div style="width:640px; height:360px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<p><div style="width:320px; height:180px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="320" height="180" allowFullScreen></iframe></div>
+<div style="width:480px; height:270px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="480" height="270" allowFullScreen></iframe></div>
+<div style="width:640px; height:360px;"><iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" allowFullScreen></iframe></div></p>
             <div class="hr"></div>
             <a href="#" class="go-top">Go Top</a>
 <div class="comments">
