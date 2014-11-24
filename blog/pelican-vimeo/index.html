@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag.">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@svenkreiss" />
+    <meta name="twitter:creator" content="@svenkreiss" />
+    <meta name="twitter:title" content="Vimeo liquid tag for Pelican" />
+    <meta name="twitter:description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag." />
+    <meta name="twitter:image:src" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
+    <meta name="twitter:domain" content="svenkreiss.com" />
+
+    <meta property="og:title" content="Vimeo liquid tag for Pelican" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag." />
+    <meta property="og:image" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
+    <meta property="og:site_name" content="svenkreiss.com" />
+
+        <link rel="alternate"  href="http://www.svenkreiss.com/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
+
+        <title>Vimeo liquid tag for Pelican - Sven Kreiss</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://www.svenkreiss.com/theme/css/pure.css">
+    <link rel="stylesheet" href="http://www.svenkreiss.com/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+                <a href="http://www.svenkreiss.com/blog/author/sven-kreiss/" title="See posts by Sven Kreiss">
+                    <img class="article-avatar" alt="Sven Kreiss" src="http://www.gravatar.com/avatar/1838de72eb5ce4b000c41c06dedb52c4">
+                </a>
+                <h2 class="article-info">Sven Kreiss</h2>
+                <small class="about-author"></small>
+                <h5>Published</h5>
+                <p>Fri 07 March 2014</p>
+                <a href="/">&larr;Home</a>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Vimeo liquid tag for&nbsp;Pelican</h1>
+                        <p class="post-meta">
+                            // under
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/web/">web</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/python/">python</a>
+                            in <a class="post-category" href="http://www.svenkreiss.com/blog/category/tech/">Tech</a>&nbsp;&nbsp;&nbsp;
+
+                            <span style="display:inline-block;">
+                            // share on <a href="https://twitter.com/share?text=%22Vimeo%20liquid%20tag%20for%26nbsp%3BPelican%22&amp;via=svenkreiss" target="_blank">
+                                <i class="fa fa-twitter fa-lg"></i> Twitter
+                            </a>
+                            </span>
+                        </p>
+                </header>
+            </section>
+            <p>Testing my implementation of the <code>vimeo</code> tag for <code>liquid_tags</code>. This is based on the <code>youtube</code> tag which in turn is based on the <a href="https://gist.github.com/jamieowen/2063748">jekyll / octopress youtube tag</a>.</p>
+<p>The&nbsp;syntax is the same as for the <code>youtube</code> tag:</p>
+<div class="highlight"><pre>
+{% vimeo id [width height] %}
+</pre></div>
+
+<p><em>Update</em>: The code is now merged into the main pelican-plugins repository on github:
+<a href="https://github.com/getpelican/pelican-plugins">https://github.com/getpelican/pelican-plugins</a></p>
+<h2>Tests with different&nbsp;sizes</h2>
+<p><div class="videobox">
+                <iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
+                        width="320" height="180" frameborder="0"
+                        webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+                </iframe>
+            </div></p>
+<p><div class="videobox">
+                <iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
+                        width="480" height="270" frameborder="0"
+                        webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+                </iframe>
+            </div></p>
+<p><div class="videobox">
+                <iframe src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
+                        width="640" height="360" frameborder="0"
+                        webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+                </iframe>
+            </div></p>
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "svenkreisscom"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; Sven Kreiss 2014 &ndash;
+        Built with a modified <a href="https://github.com/svenkreiss/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>.
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4070485-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '54735740eddd5b086f007b96');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+</body>
+</html>
