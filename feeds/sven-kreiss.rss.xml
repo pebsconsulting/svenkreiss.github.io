@@ -4,85 +4,7 @@
 For my PhD, I was working on the discovery of the Higgs boson. &lt;span class="caps"&gt;CERN&lt;/span&gt; was an amazing place during that time, with the best particle physicists from all over the world working together. I made substantial contributions to the discovery in the &lt;a href="http://atlas.ch/"&gt;&lt;span class="caps"&gt;ATLAS&lt;/span&gt; collaboration&lt;/a&gt;. I was the first person to combine two search channels and to see the 5σ discovery threshold being breached (&lt;a href="/blog/chasing-the-higgs-nyt/"&gt;blog post on the New York Times article&lt;/a&gt;). I created the plot on the right that was published in the &lt;a href="http://www.sciencedirect.com/science/article/pii/S037026931200857X"&gt;&lt;span class="caps"&gt;ATLAS&lt;/span&gt; discovery paper&lt;/a&gt;, &lt;a href="http://www.sciencemag.org/content/338/6114/1576.full.pdf"&gt;Science&lt;/a&gt; and many other places. I also worked on measuring the Higgs boson mass and the coupling strengths to other particles. A large part of my time was dedicated to statistical modeling and the development of analysis tools, some of which are now part of &lt;a href="http://root.cern.ch"&gt;&lt;span class="caps"&gt;CERN&lt;/span&gt;&amp;#8217;s &lt;span class="caps"&gt;ROOT&lt;/span&gt; data analysis tool&lt;/a&gt; and its statistics extension &lt;a href="https://twiki.cern.ch/twiki/bin/view/RooStats/WebHome"&gt;RooStats&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Download Thesis: &lt;a href="/files/phd_thesis.pdf"&gt;&lt;i class="fa fa-file fa-lg"&gt;&lt;/i&gt; &lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;br /&gt;
-After my PhD, I left academia and soon I will start working for &lt;a href="http://www.trywildcard.com/"&gt;Wildcard&lt;/a&gt; as a Data&amp;nbsp;Scientist.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Sun, 17 Aug 2014 00:00:00 -0400</pubDate><guid>tag:www.svenkreiss.com,2014-08-17:blog/phd-thesis/</guid><category>physics</category></item><item><title>The Data Center and the Bazaar</title><link>http://www.svenkreiss.com/blog/data-center-bazaar/</link><description>&lt;p&gt;&lt;img width="150" alt="dockbroker icon" title="dockbroker icon" class="img-thumbnail float-right" src="/images/bazaar.png"&gt;
-This is a concept for peer-to-peer computing. The goal is to use a heterogeneous set of computers to run analyses on data. The computers might be the local machine, a remote desktop, an &lt;span class="caps"&gt;AWS&lt;/span&gt; &lt;span class="caps"&gt;EC2&lt;/span&gt; instance, an &lt;a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Elastic Beanstalk app&lt;/a&gt;, a node on the &lt;a href="https://developers.google.com/compute/docs/containers"&gt;Google Compute Engine&lt;/a&gt; or some other real or virtual machine. All these machines have access to data in the form of &lt;code&gt;s3://*&lt;/code&gt;, &lt;code&gt;hdfs://*&lt;/code&gt;, &lt;code&gt;file://*&lt;/code&gt;, &lt;code&gt;ssh://*&lt;/code&gt;, &lt;code&gt;http://*&lt;/code&gt; or some other means which might be slow or fast and cheap or&amp;nbsp;expensive.&lt;/p&gt;
-&lt;h2&gt;Flow&lt;/h2&gt;
-&lt;p&gt;Assigning priorities to jobs or setting up priority queues on clusters is tedious and usually not very effective. Simple &lt;code&gt;PBS queue&lt;/code&gt; systems don&amp;#8217;t even have priorities, but all users just submit all their jobs to the same queue. Jobs are submitted to a central manager and get executed on the next available compute node. The data then has to be copied to that&amp;nbsp;node.&lt;/p&gt;
-&lt;p&gt;The&amp;nbsp;idea behind this post is more similar to a bazaar where there is no central manager. Every &lt;em&gt;client&lt;/em&gt; knows at least one &lt;em&gt;broker&lt;/em&gt; which is a manager of a single compute node. Brokers know each other and can refer clients. To submit a job, the client asks a subset of the brokers that it knows for an &lt;em&gt;offer&lt;/em&gt; based on a description of the job. The offer is made in &lt;span class="caps"&gt;US&lt;/span&gt;$ and comes with an expected completion time. The broker makes that offer based on the prices that are given by the cloud provider or (partially) free for local machines. The client picks the cheapest offer taking the estimated completion time into&amp;nbsp;account.&lt;/p&gt;
-&lt;p&gt;Clients can build reputation in brokers when they deliver on time and still prefer more expensive brokers. Brokers can also build reputation of clients when their estimated run times and required resources match the job description the offer was based on. If that is not the case and a client repeatedly underestimates job processing times, the broker could add extra&amp;nbsp;fees.&lt;/p&gt;
-&lt;p&gt;At&amp;nbsp;this point, the offers are only used to find the best place to run the job. No money is actually transfered and that is just fine. However, one could go one step further and have digital coins (something like Bitcoin) just for this set of machines. People in an organization can be given a monthly amount of coins and then pay for their compute jobs. This would make users more conscious of the resources they are using and would limit a combined &amp;#8220;cpu+memory+data&amp;#8221; quota. At the same time, it would act as a security measure as people without this coin would not be able to use the resources. (For the cryptocurrency experts: one could use &lt;a href="http://en.wikipedia.org/wiki/Smart_contract"&gt;smart contracts&lt;/a&gt; and maybe &lt;a href="https://docs.google.com/document/d/1AnkP_cVZTCMLIzw4DvsW6M8Q2JC0lIzrTLuoWu2z1BE"&gt;colored coins&lt;/a&gt;.)&lt;/p&gt;
-&lt;h2&gt;Technical Suggestion: &lt;code&gt;dockbroker&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;To&amp;nbsp;make things a bit more concrete, here is an example interface. It uses &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; which is advertised with &lt;em&gt;&amp;#8220;Build, Ship and Run Any App, Anywhere&amp;#8221;&lt;/em&gt; and &lt;em&gt;&amp;#8220;An open platform for distributed applications for developers and sysadmins&amp;#8221;&lt;/em&gt;. It is a little bit like a virtual machine, but uses the same kernel as the host and therefore it is fast. You can run a &lt;span class="caps"&gt;JVM&lt;/span&gt; inside it, but you can also run plain&amp;nbsp;C.&lt;/p&gt;
-&lt;h3&gt;Job&lt;/h3&gt;
-&lt;p&gt;A&amp;nbsp;job is defined by a &lt;code&gt;Dockerfile&lt;/code&gt; and a &lt;code&gt;manifest&lt;/code&gt; either in a local directory or inside a remote repository (for example on GitHub). The broker will use the Dockerfile to see which slices of the Docker image it has cached (and reduce the price). The manifest is used to quantify the price of&amp;nbsp;resources.&lt;/p&gt;
-&lt;p&gt;Example of a simple &lt;code&gt;manifest&lt;/code&gt; file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{
-    &amp;quot;Name&amp;quot;: &amp;quot;Test job 1&amp;quot;,
-    &amp;quot;Submitter&amp;quot;: &amp;quot;Sven Kreiss &amp;lt;me@svenkreiss.com&amp;gt;&amp;quot;,
-    &amp;quot;MaxDuration&amp;quot;: &amp;quot;24h&amp;quot;,
-    &amp;quot;EstDuration&amp;quot;: &amp;quot;12h&amp;quot;,
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;This job has access to unspecified &lt;code&gt;InputResources&lt;/code&gt; and &lt;code&gt;OutputResources&lt;/code&gt; (see advanced example below) but brokers who have easy access to those resources wont be able to make better offers than any other broker. Large files should always be specified because neglecting to specify expensive resources could lead to bad&amp;nbsp;reputation.&lt;/p&gt;
-&lt;p&gt;Example of an advanced &lt;code&gt;manifest&lt;/code&gt; file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;{
-    &amp;quot;Name&amp;quot;: &amp;quot;Test job 2&amp;quot;,
-    &amp;quot;Submitter&amp;quot;: &amp;quot;Sven Kreiss &amp;lt;me@svenkreiss.com&amp;gt;&amp;quot;,
-    &amp;quot;MaxDuration&amp;quot;: &amp;quot;24h&amp;quot;,
-    &amp;quot;EstDuration&amp;quot;: &amp;quot;12h&amp;quot;,
-    &amp;quot;RAM&amp;quot;: &amp;quot;4GB&amp;quot;,
-    &amp;quot;GPU&amp;quot;: &amp;quot;nvidia&amp;quot;,
-    &amp;quot;JobArray&amp;quot;: 64,
-    &amp;quot;RequireParallelExecution&amp;quot;: true,
-    &amp;quot;InputResources&amp;quot;: [
-        {
-            &amp;quot;CacheLifeTime&amp;quot;: &amp;quot;1h&amp;quot;,
-            &amp;quot;Size&amp;quot;: &amp;quot;1MB&amp;quot;,
-            &amp;quot;Md5&amp;quot;: &amp;quot;12345678901234567890&amp;quot;,
-            &amp;quot;Locations&amp;quot;: [
-                &amp;quot;file://home/svenkreiss/data/some_data.csv&amp;quot;,
-                &amp;quot;s3://testbucket/some_data.csv&amp;quot;,
-            ],
-        },
-        {
-            &amp;quot;JobArray&amp;quot;: &amp;quot;0-31&amp;quot;,
-            &amp;quot;CacheLifeTime&amp;quot;: &amp;quot;forever&amp;quot;,
-            &amp;quot;Size&amp;quot;: &amp;quot;500MB&amp;quot;,
-            &amp;quot;Md5&amp;quot;: &amp;quot;12345678901234567891&amp;quot;,
-            &amp;quot;Locations&amp;quot;: [
-                &amp;quot;hdfs://some_path/some_file_0.tar.gz&amp;quot;
-            ],
-        },
-        {
-            &amp;quot;JobArray&amp;quot;: &amp;quot;32-63&amp;quot;,
-            &amp;quot;CacheLifeTime&amp;quot;: &amp;quot;forever&amp;quot;,
-            &amp;quot;Size&amp;quot;: &amp;quot;500MB&amp;quot;,
-            &amp;quot;Md5&amp;quot;: &amp;quot;12345678901234567892&amp;quot;,
-            &amp;quot;Locations&amp;quot;: [
-                &amp;quot;hdfs://some_path/some_file_1.tar.gz&amp;quot;
-            ],
-        },
-    ],
-    &amp;quot;OutputResources&amp;quot;: [
-        {&amp;quot;Size&amp;quot;: &amp;quot;1MB&amp;quot;, &amp;quot;Location&amp;quot;: &amp;quot;file://home/svenkreiss/job/test_job_1.csv&amp;quot;},
-        {&amp;quot;Size&amp;quot;: &amp;quot;1KB&amp;quot;, &amp;quot;Location&amp;quot;: &amp;quot;file://home/svenkreiss/job/test_job_1.log&amp;quot;},
-    ],
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Parallel jobs that are communicating are created by setting &lt;code&gt;"RequireParallelExecution": true&lt;/code&gt; which will tell the broker to take only as many jobs as can be run in parallel. Other jobs have to be left to other brokers. The estimated time for completion will have to take into account that all jobs have to run in&amp;nbsp;parallel.&lt;/p&gt;
-&lt;h3&gt;Nodes running &lt;code&gt;dockbroker&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Every compute node runs a &lt;code&gt;dockbroker&lt;/code&gt;. &lt;code&gt;dockbroker&lt;/code&gt;s advertise their existence to other &lt;code&gt;dockbroker&lt;/code&gt;s. Clients can ask &amp;#8220;Who else do you know?&amp;#8221; to discover other brokers to get alternative offers. Brokers create offers and handle the scheduling of jobs.
-Nodes that have data locally available or already cached part of the Docker image (a &lt;code&gt;slice&lt;/code&gt;) are cheaper and therefore preferred. When data has to be downloaded to and uploaded from the node, the price for the bandwidth as well as the extra time are taken into account in the offer. Bandwidth price and download times depend on the location of the source (e.g. it is cheaper to download data from &lt;a href="http://aws.amazon.com/s3/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; S3&lt;/a&gt; when the job is run on &lt;a href="http://aws.amazon.com/ec2/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; &lt;span class="caps"&gt;EC2&lt;/span&gt;&lt;/a&gt;; see &lt;a href="http://aws.amazon.com/s3/pricing/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; S3 pricing&lt;/a&gt;). This gives the system &lt;em&gt;data locality&lt;/em&gt;. The estimated time to completion includes the estimated run times for jobs already in the&amp;nbsp;queue.&lt;/p&gt;
-&lt;h3&gt;Clients pick&amp;nbsp;Brokers&lt;/h3&gt;
-&lt;p&gt;Generally, clients pick the cheapest broker. However, the estimated time for completion might be valuable. For a compute node, the value of time is linear as the price of keeping the machine running on a cloud provider is a fixed cost by the hour. The &amp;#8220;pain&amp;#8221; of waiting for a job to complete could increase quadratic or exponentially which will define a sweet spot for when it is appropriate to pay more for a faster compute&amp;nbsp;node.&lt;/p&gt;
-&lt;h2&gt;Use&amp;nbsp;Cases&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;dockbroker&lt;/code&gt; just sets up environments. The actual parallelized execution, collection of results, data management, etc. has to be handled separately. You could imagine running an &lt;a href="http://ipython.org/ipython-doc/dev/parallel/parallel_intro.html"&gt;ipcluster&lt;/a&gt; with it (popular in the &lt;code&gt;IPython&lt;/code&gt; community) or running an &lt;a href="https://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; cluster. Sometimes you just need different software versions in your cluster (like different versions of &lt;a href="http://www.r-project.org/"&gt;R&lt;/a&gt; or &lt;a href="http://root.cern.ch"&gt;&lt;span class="caps"&gt;ROOT&lt;/span&gt;&lt;/a&gt;) or different resources (e.g. a &lt;span class="caps"&gt;GPU&lt;/span&gt;) and &lt;code&gt;dockbroker&lt;/code&gt; can find the best place for the job and create the virtual&amp;nbsp;environment.&lt;/p&gt;
-&lt;h2&gt;Why?&lt;/h2&gt;
-&lt;p&gt;Because I need it. However, it is not like I am creating distributed computing environments every day. I am more a user of &lt;span class="caps"&gt;HPC&lt;/span&gt;, but it sounds like an interesting project to implement in &lt;a href="http://golang.org/"&gt;Go&lt;/a&gt; (Docker is written in &lt;a href="http://golang.org/"&gt;Go&lt;/a&gt;). Contributions to &lt;a href="https://github.com/svenkreiss/dockbroker"&gt;dockbroker on github&lt;/a&gt; are very&amp;nbsp;welcome.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Thu, 14 Aug 2014 00:00:00 -0400</pubDate><guid>tag:www.svenkreiss.com,2014-08-14:blog/data-center-bazaar/</guid><category>Docker</category><category>Go</category><category>HPC</category><category>peer-to-peer</category><category>distributed</category></item><item><title>Databench</title><link>http://www.svenkreiss.com/blog/databench-initial/</link><description>&lt;blockquote&gt;
+After my PhD, I left academia and soon I will start working for &lt;a href="http://www.trywildcard.com/"&gt;Wildcard&lt;/a&gt; as a Data&amp;nbsp;Scientist.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Sun, 17 Aug 2014 00:00:00 -0400</pubDate><guid>tag:www.svenkreiss.com,2014-08-17:blog/phd-thesis/</guid><category>physics</category></item><item><title>Databench</title><link>http://www.svenkreiss.com/blog/databench-initial/</link><description>&lt;blockquote&gt;
 &lt;p&gt;Databench is a data analysis tool using &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;, &lt;a href="http://socket.io/"&gt;Socket.&lt;span class="caps"&gt;IO&lt;/span&gt;&lt;/a&gt; and &lt;a href="http://d3js.org/"&gt;d3.js&lt;/a&gt; with optional parallelization with &lt;a href="http://python-rq.org/"&gt;Redis Queue&lt;/a&gt; and visualization with &lt;a href="http://mpld3.github.io/"&gt;mpld3&lt;/a&gt;. Check out the &lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;live demos&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="http://databench-examples-viewer.svenkreiss.com/"&gt;&lt;img alt="/images/mpld3pi_demo.png" src="/images/mpld3pi_demo.png" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -388,6 +310,6 @@ require(['dvds', 'dvds.visualize'], function() {
 &lt;p&gt;Link: &lt;a href="/files/morphDemo.html"&gt;morphDemo.html&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Thu, 06 Mar 2014 10:10:00 -0500</pubDate><guid>tag:www.svenkreiss.com,2014-03-06:blog/morph-demo/</guid><category>physics</category><category>d3.js</category><category>statistics</category></item><item><title>Chasing the Higgs - New York Times</title><link>http://www.svenkreiss.com/blog/chasing-the-higgs-nyt/</link><description>&lt;p&gt;My&amp;nbsp;part of the Higgs discovery story in the New York&amp;nbsp;Times.&lt;/p&gt;
 &lt;p&gt;&lt;img width="200" alt="Science Times section front page" title="Science Times section front page" src="/images/nyt_science_front_page.jpeg"&gt;
 &lt;img width="350" alt="Chasing the Higgs, my part" title="Chasing the Higgs, my part" src="/images/nyt_science_my_part.jpeg"&gt;&lt;/p&gt;
-&lt;p&gt;Read the full story on the &lt;a href="http://www.nytimes.com/2013/03/05/science/chasing-the-higgs-boson-how-2-teams-of-rivals-at-CERN-searched-for-physics-most-elusive-particle.html?view=Opening_the_Box"&gt;New York Times website&lt;/a&gt; from March 5,&amp;nbsp;2013.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Sat, 01 Mar 2014 02:00:00 -0500</pubDate><guid>tag:www.svenkreiss.com,2014-03-01:blog/chasing-the-higgs-nyt/</guid><category>being awesome</category></item><item><title>number4 in Leipziger Volkszeitung</title><link>http://www.svenkreiss.com/blog/number4-lvz/</link><description>&lt;h2&gt;Brandiser teaches robot how to&amp;nbsp;walk&lt;/h2&gt;
+&lt;p&gt;Read the full story on the &lt;a href="http://www.nytimes.com/2013/03/05/science/chasing-the-higgs-boson-how-2-teams-of-rivals-at-CERN-searched-for-physics-most-elusive-particle.html?view=Opening_the_Box"&gt;New York Times website&lt;/a&gt; from March 5,&amp;nbsp;2013.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Sat, 01 Mar 2014 02:00:00 -0500</pubDate><guid>tag:www.svenkreiss.com,2014-03-01:blog/chasing-the-higgs-nyt/</guid><category>being awesome</category></item><item><title>number4 in Leipziger Volkszeitung</title><link>http://www.svenkreiss.com/blog/number4-lvz/</link><description>&lt;h2&gt;Student from Brandis teaches Robot How to&amp;nbsp;Walk&lt;/h2&gt;
 &lt;p&gt;Newspaper article about the competition Jugend Forscht. In 2004 this project got me the first place in the regional and state competition. The photo was taken at the national competition in&amp;nbsp;Saarbruecken.&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/number4/lvz.jpg" alt="number4 in LVZ" title="number4 in LVZ"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sven Kreiss</dc:creator><pubDate>Thu, 01 Jan 2004 00:00:00 -0500</pubDate><guid>tag:www.svenkreiss.com,2004-01-01:blog/number4-lvz/</guid><category>being awesome</category><category>number4</category></item></channel></rss>
