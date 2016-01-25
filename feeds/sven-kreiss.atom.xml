@@ -290,21 +290,24 @@ require(['dvds', 'dvds.visualize'], function() {
 &lt;a href="https://github.com/getpelican/pelican-plugins"&gt;https://github.com/getpelican/pelican-plugins&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Tests with different&amp;nbsp;sizes&lt;/h2&gt;
 &lt;p&gt;&lt;div class="videobox"&gt;
-                &lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
-                        width="320" height="180" frameborder="0"
-                        webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
+                &lt;iframe
+                    src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
+                    width="320" height="180" frameborder="0"
+                    webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
                 &lt;/iframe&gt;
             &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class="videobox"&gt;
-                &lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
-                        width="480" height="270" frameborder="0"
-                        webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
+                &lt;iframe
+                    src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
+                    width="480" height="270" frameborder="0"
+                    webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
                 &lt;/iframe&gt;
             &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class="videobox"&gt;
-                &lt;iframe src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
-                        width="640" height="360" frameborder="0"
-                        webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
+                &lt;iframe
+                    src="//player.vimeo.com/video/21789576?title=0&amp;amp;byline=0&amp;amp;portrait=0"
+                    width="640" height="360" frameborder="0"
+                    webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;
                 &lt;/iframe&gt;
             &lt;/div&gt;&lt;/p&gt;</summary><category term="web"></category><category term="python"></category></entry><entry><title>morphDemo</title><link href="http://www.svenkreiss.com/blog/morph-demo/" rel="alternate"></link><updated>2014-03-06T10:10:00-05:00</updated><author><name>Sven Kreiss</name></author><id>tag:www.svenkreiss.com,2014-03-06:blog/morph-demo/</id><summary type="html">&lt;p&gt;&lt;img width="350" alt="preview of kd-tree morphing" title="preview of kd-tree morphing" class="img-thumbnail float-right" src="/images/kdtreemorph_preview.png"&gt;
 &lt;a href="/files/morphDemo.html"&gt;This&lt;/a&gt; is an interactive demo for a new morphing algorithm with special properties that are motivated from Physics. It uses &lt;span class="caps"&gt;KD&lt;/span&gt; trees and kernel density estimates that are calculated in real time in this demo. All visualization is done using &lt;code&gt;d3.js&lt;/code&gt; and custom code for &lt;span class="caps"&gt;KD&lt;/span&gt; trees and kernel densities in&amp;nbsp;JavaScript.&lt;/p&gt;
