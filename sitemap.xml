@@ -4,16 +4,9 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://www.svenkreiss.com/index.html</loc>
-<lastmod>2017-03-23T20:58:20-00:00</lastmod>
+<loc>http://www.svenkreiss.com/</loc>
+<lastmod>2017-04-01T15:44:56-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.svenkreiss.com/openosci.html</loc>
-<lastmod>2014-03-09T19:36:00-04:00</lastmod>
-<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -55,6 +48,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.svenkreiss.com/number4.html</loc>
 <lastmod>2014-03-22T00:00:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.svenkreiss.com/openosci.html</loc>
+<lastmod>2014-03-09T19:36:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

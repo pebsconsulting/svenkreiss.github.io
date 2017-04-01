@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The NMEA-Parser from the GPSD project. This code is hosted on google code now: http://code.google.com/p/gpsd-nmea/ Old instructions on how to recreate this yourself To extract the NMEA-Parser out of GPSD is easier than it looks at first. Just download the whole source and ...">
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@svenkreiss">
-    <meta name="twitter:creator" content="@svenkreiss">
-    <meta name="twitter:title" content="nmea-gpsd">
-    <meta name="twitter:description" content="The NMEA-Parser from the GPSD project. This code is hosted on google code now: http://code.google.com/p/gpsd-nmea/ Old instructions on how to recreate this yourself To extract the NMEA-Parser out of GPSD is easier than it looks at first. Just download the whole source and ...">
-    <meta name="twitter:domain" content="svenkreiss.com">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@svenkreiss" />
+    <meta name="twitter:creator" content="@svenkreiss" />
+    <meta name="twitter:title" content="nmea-gpsd" />
+    <meta name="twitter:description" content="The NMEA-Parser from the GPSD project. This code is hosted on google code now: http://code.google.com/p/gpsd-nmea/ Old instructions on how to recreate this yourself To extract the NMEA-Parser out of GPSD is easier than it looks at first. Just download the whole source and ..." />
+    <meta name="twitter:image:src" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
+    <meta name="twitter:domain" content="svenkreiss.com" />
 
     <meta property="og:title" content="nmea-gpsd" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="The NMEA-Parser from the GPSD project. This code is hosted on google code now: http://code.google.com/p/gpsd-nmea/ Old instructions on how to recreate this yourself To extract the NMEA-Parser out of GPSD is easier than it looks at first. Just download the whole source and ..." />
+    <meta property="og:image" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
     <meta property="og:site_name" content="svenkreiss.com" />
 
         <link rel="alternate"  href="http://www.svenkreiss.com/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
@@ -71,12 +73,12 @@ This code is hosted on google code now:&nbsp;http://code.google.com/p/gpsd-nmea/
 </ul>
 <p>The&nbsp;next step is to replace all references to &#8221;gpsd.h&#8221; by &#8221;gps.h&#8221; and remove &#8221;#include gpsd_config.h&#8221;. 
 You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&#8221; and &#8221;gpsd.h&#8221; to &#8221;gps.h&#8221;. Next step is to rewrite the functions in &#8221;nmea_parse.c&#8221; to take structs of type gps_data_t instead of gps_device_t. All what is necessary is to move the struct &#8221;nmea&#8221; from gps_device_t.driver to gps_data_t. Last thing is the dependency on gpsd_report. I just disabled it by putting a &#8221;#define gpsd_report(&#8230;)&#8221; at the beginning of&nbsp;&#8221;gps.h&#8221;.</p>
-        </div>
+<footer class="footer">
+    <p>&copy; Sven Kreiss 2014 &ndash; 2017</p>
+</footer>        </div>
     </div>
 </div>
-<footer class="footer">
-    <p>&copy; Sven Kreiss 2014 &ndash; 2016</p>
-</footer>    <script>
+    <script>
         var $top = $('.go-top');
 
         // Show or hide the sticky footer button
@@ -110,6 +112,23 @@ You will also need to move some &#8221;#define&#8221; from &#8221;gpsd_config.h&
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '54735740eddd5b086f007b96');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
   })();
 </script>
 

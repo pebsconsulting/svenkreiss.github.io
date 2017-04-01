@@ -3,25 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag.">
+    <meta name="description" content="Details on the peer-to-peer networking infrastructure for dockbroker.">
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@svenkreiss" />
     <meta name="twitter:creator" content="@svenkreiss" />
-    <meta name="twitter:title" content="Vimeo liquid tag for Pelican" />
-    <meta name="twitter:description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag." />
-    <meta name="twitter:image:src" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
+    <meta name="twitter:title" content="Networking in dockbroker" />
+    <meta name="twitter:description" content="Details on the peer-to-peer networking infrastructure for dockbroker." />
+    <meta name="twitter:image:src" content="http://www.svenkreiss.com/images/bazaar.png" />
     <meta name="twitter:domain" content="svenkreiss.com" />
 
-    <meta property="og:title" content="Vimeo liquid tag for Pelican" />
+    <meta property="og:title" content="Networking in dockbroker" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Extend liquid tags plugin for Pelican to include a Vimeo tag." />
-    <meta property="og:image" content="http://www.svenkreiss.com/images/me_nyc_square_500.jpeg" />
+    <meta property="og:description" content="Details on the peer-to-peer networking infrastructure for dockbroker." />
+    <meta property="og:image" content="http://www.svenkreiss.com/images/bazaar.png" />
     <meta property="og:site_name" content="svenkreiss.com" />
 
         <link rel="alternate"  href="http://www.svenkreiss.com/feeds/all.atom.xml" type="application/atom+xml" title="Sven Kreiss Full Atom Feed"/>
 
-        <title>Vimeo liquid tag for Pelican - Sven Kreiss</title>
+        <title>Networking in dockbroker - Sven Kreiss</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -40,8 +40,8 @@
                 </a>
                 <h2 class="article-info">Sven Kreiss</h2>
                 <small class="about-author"></small>
-                <h5>Published</h5>
-                <p>Fri 07 March 2014</p>
+                <h5>Draft</h5>
+                <p>Sat 16 August 2014</p>
                 <a href="/">&larr;Home</a>
         </header>
     </div>
@@ -49,51 +49,28 @@
         <div class="content">
             <section class="post">
                 <header class="post-header">
-                    <h1>Vimeo liquid tag for&nbsp;Pelican</h1>
+                    <h1>Networking in&nbsp;dockbroker</h1>
                         <p class="post-meta">
                             // under
-                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/web/">web</a>
-                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/python/">python</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/docker/">Docker</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/go/">Go</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/hpc/">HPC</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/peer-to-peer/">peer-to-peer</a>
+                                <a class="post-category" href="http://www.svenkreiss.com/blog/tag/distributed/">distributed</a>
                             in <a class="post-category" href="http://www.svenkreiss.com/blog/category/tech/">Tech</a>&nbsp;&nbsp;&nbsp;
 
                             <span style="display:inline-block;">
-                            // share on <a href="https://twitter.com/share?text=%22Vimeo%20liquid%20tag%20for%26nbsp%3BPelican%22&amp;via=svenkreiss" target="_blank">
+                            // share on <a href="https://twitter.com/share?text=%22Networking%20in%26nbsp%3Bdockbroker%22&amp;via=svenkreiss" target="_blank">
                                 <i class="fa fa-twitter fa-lg"></i> Twitter
                             </a>
                             </span>
                         </p>
                 </header>
             </section>
-            <p>Testing my implementation of the <code>vimeo</code> tag for <code>liquid_tags</code>. This is based on the <code>youtube</code> tag which in turn is based on the <a href="https://gist.github.com/jamieowen/2063748">jekyll / octopress youtube tag</a>.</p>
-<p>The&nbsp;syntax is the same as for the <code>youtube</code> tag:</p>
-<div class="highlight"><pre>
-{% vimeo id [width height] %}
-</pre></div>
-
-<p><em>Update</em>: The code is now merged into the main pelican-plugins repository on github:
-<a href="https://github.com/getpelican/pelican-plugins">https://github.com/getpelican/pelican-plugins</a></p>
-<h2>Tests with different&nbsp;sizes</h2>
-<p><div class="videobox">
-                <iframe
-                    src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
-                    width="320" height="180" frameborder="0"
-                    webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-                </iframe>
-            </div></p>
-<p><div class="videobox">
-                <iframe
-                    src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
-                    width="480" height="270" frameborder="0"
-                    webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-                </iframe>
-            </div></p>
-<p><div class="videobox">
-                <iframe
-                    src="//player.vimeo.com/video/21789576?title=0&amp;byline=0&amp;portrait=0"
-                    width="640" height="360" frameborder="0"
-                    webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-                </iframe>
-            </div></p>
+            <p><img width="150" alt="dockbroker icon" title="dockbroker icon" class="img-thumbnail float-right" src="/images/bazaar.png"></p>
+<p>All&nbsp;connections will be permanently open connections via WebSockets. In this way, not all nodes need to be on an accessible network. It is enough when a broker on a private network connects to a public broker to establish a two-way communication. Number of open connection in Go should not be a problem as it would be with a full Apache given that Go does not create a separate thread for every connection. My estimate is that permanent connections for thousands of machines are fine; to be&nbsp;tested.</p>
+<h2>Zero capability&nbsp;brokers</h2>
+<p><em>Zero capability</em> refers to their compute and data store capabilities. They are still part of the network of brokers and can refer clients to other brokers. One such broker can be used as a public server to redirect requests from private&nbsp;networks.</p>
             <div class="hr"></div>
             <a href="#" class="go-top">Go Top</a>
 <div class="comments">
